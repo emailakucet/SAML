@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#0b192c" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="QM B200T" />
+  <meta name="description" content="Aplikasi PWA Quality Manager (QM) AMTO Beechcraft B200T Aircraft System School, No 16 Skuadron (Jejak Samudra), PU Subang." />
+  <title>QM AMTO 16 Skn | Beechcraft B200T — Jejak Samudra (PWA)</title>
+  <!-- Dynamic PWA Manifest & Apple Touch Icon injected via JS -->
+  <link id="pwaManifestLink" rel="manifest" href="" />
+  <link id="appleTouchIconLink" rel="apple-touch-icon" href="" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              950: '#060f1e',
+              900: '#0b1d3a',
+              800: '#122c54',
+              700: '#1b3e73',
+            },
+            samudra: {
+              teal: '#0d9488',
+              cyan: '#0284c7',
+              gold: '#d97706',
+              amber: '#f59e0b',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #eef2f7;
+      color: #0f172a;
+      overflow-x: hidden;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #e2e8f0;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+      }
+      .print-break {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col pb-20 md:pb-0">
+
+  <!-- ANDROID PWA INSTALL BANNER (SHOWN WHEN INSTALLABLE OR ON MOBILE BROWSER) -->
+  <div id="androidInstallBanner" class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-300 text-slate-950 border-b border-amber-600/30 px-4 py-2.5 no-print">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-2.5">
+        <span class="p-1.5 rounded-lg bg-slate-950 text-amber-400 shrink-0">
+          <i data-lucide="smartphone" class="w-4 h-4"></i>
+        </span>
+        <div>
+          <span class="font-black uppercase tracking-wide">Pasang Aplikasi di Android (PWA):</span>
+          <span class="font-medium"> Boleh dipasang terus ke Home Screen telefon Android selepas dihoskan di GitHub Pages.</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="btnTriggerInstall" onclick="triggerAndroidInstall()" class="px-3.5 py-1.5 rounded-xl font-black bg-slate-950 hover:bg-slate-800 text-amber-300 shadow transition flex items-center gap-1.5">
+          <i data-lucide="download-cloud" class="w-3.5 h-3.5"></i>
+          <span>Install Android App</span>
+        </button>
+        <button onclick="openAndroidGuideModal()" class="px-3 py-1.5 rounded-xl font-bold bg-white/80 hover:bg-white text-slate-900 border border-slate-900/20 transition">
+          Cara Install &amp; GitHub
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP COMMAND HEADER WITH NO 16 SKUADRON "JEJAK SAMUDRA" EMBLEM -->
+  <header class="bg-gradient-to-br from-[#060f1e] via-[#0b192c] to-[#122c54] text-white border-b-4 border-[#d4af37] shadow-xl">
+                <circle cx="20" cy="72" r="2.8" fill="#fbbf24"/>
+                <circle cx="17" cy="56" r="2.8" fill="#fbbf24"/>
+                <circle cx="22" cy="40" r="2.8" fill="#fbbf24"/>
+                <circle cx="100" cy="72" r="2.8" fill="#fbbf24"/>
+                <circle cx="103" cy="56" r="2.8" fill="#fbbf24"/>
+                <circle cx="98" cy="40" r="2.8" fill="#fbbf24"/>
+                <!-- RMAF Crown Top Motif -->
+                <path d="M44 22 L48 12 L60 16 L72 12 L76 22 Z" fill="url(#goldGrad)" stroke="#fef3c7" stroke-width="0.8"/>
+                <circle cx="60" cy="10" r="3" fill="#fbbf24"/>
+                <!-- Outer Ring -->
+                <circle cx="60" cy="60" r="34" fill="url(#coreNavy)" stroke="url(#goldGrad)" stroke-width="3.5"/>
+                <circle cx="60" cy="60" r="28" fill="none" stroke="#38bdf8" stroke-width="0.7" stroke-dasharray="2 2" opacity="0.7"/>
+                <!-- Circuitry / Samudra Wave Lines -->
+                <path d="M36 68 Q48 62 60 68 T84 68" fill="none" stroke="#2dd4bf" stroke-width="1.6" opacity="0.85"/>
+                <path d="M38 74 Q50 69 62 74 T82 74" fill="none" stroke="#38bdf8" stroke-width="1.3" opacity="0.75"/>
+                <!-- Eagle / Hawk Stylized Crest -->
+                <path d="M42 54 L55 39 L67 42 L77 37 L72 48 L79 52 L67 56 L58 64 L48 61 Z" fill="#f8fafc" stroke="url(#goldGrad)" stroke-width="1.3"/>
+                <polygon points="77,37 85,40 77,44" fill="url(#goldGrad)"/>
+                <circle cx="68" cy="44" r="2.2" fill="#0284c7"/>
+                <!-- Squadron 16 Badges -->
+                <text x="34" y="62" fill="#fde68a" font-size="8.5" font-weight="900" font-family="Inter, sans-serif">16</text>
+                <text x="77" y="62" fill="#fde68a" font-size="8.5" font-weight="900" font-family="Inter, sans-serif">16</text>
+                <!-- Bottom Gold Ribbon "JEJAK SAMUDRA" -->
+                <path d="M22 92 Q60 103 98 92 L95 103 Q60 113 25 103 Z" fill="url(#goldGrad)" stroke="#78350f" stroke-width="0.8"/>
+                <text x="60" y="101.5" text-anchor="middle" fill="#091526" font-size="6.6" font-weight="900" letter-spacing="0.6" font-family="Inter, sans-serif">JEJAK SAMUDRA</text>
+              </svg>
+            </div>
+            <label for="crestUploadInput" class="no-print absolute -bottom-1.5 -right-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 px-2 py-1 rounded-lg shadow cursor-pointer border border-amber-200 transition flex items-center gap-1 text-[10px] font-black" title="Tukar Logo Skuadron (280540.png) & kemas kini ikon Android">
+              <i data-lucide="image-plus" class="w-3 h-3"></i>
+              <span class="hidden sm:inline">Logo</span>
+              <input type="file" id="crestUploadInput" accept="image/*" class="hidden" onchange="handleCrestUpload(event)" />
+            </label>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider bg-amber-400 text-slate-950 rounded-md">
+                JEJAK SAMUDRA &bull; NO 16 SKUADRON
+              </span>
+              <span class="px-2.5 py-0.5 text-[11px] font-bold bg-teal-500/20 text-teal-200 border border-teal-400/30 rounded-md">
+                MSTAR 147 &bull; MSTAR 66
+              </span>
+              <span class="px-2.5 py-0.5 text-[11px] font-bold bg-sky-500/20 text-sky-200 border border-sky-400/30 rounded-md">
+                MTOE &bull; TIM (PU 2504-002)
+              </span>
+            </div>
+            <h1 class="text-lg sm:text-2xl font-black tracking-tight text-white mt-1">
+              Quality Manager (QM) Command Hub — Beechcraft B200T System School
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-300">
+              Approved Maintenance Training Organisation (AMTO) &bull; No 16 Skuadron (NO 16 DKN), Pangkalan Udara Subang, Malaysia
+            </p>
+          </div>
+        </div>
+
+        <!-- GitHub / Android PWA / Persistence Toolbar -->
+        <div class="flex flex-wrap items-center gap-2 no-print">
+          <button onclick="openAndroidGuideModal()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-teal-600 hover:bg-teal-500 text-white shadow transition">
+            <i data-lucide="smartphone" class="w-4 h-4"></i>
+            <span>Android &amp; GitHub</span>
+          </button>
+          <button onclick="exportJsonBackup()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-navy-700 hover:bg-navy-600 text-white border border-sky-400/30 shadow transition">
+            <i data-lucide="download" class="w-4 h-4 text-amber-300"></i>
+            <span>Export JSON</span>
+          </button>
+          <label class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-navy-700 hover:bg-navy-600 text-white border border-sky-400/30 shadow transition cursor-pointer">
+            <i data-lucide="upload" class="w-4 h-4 text-teal-300"></i>
+            <span>Import JSON</span>
+            <input type="file" id="jsonImportInput" accept=".json" class="hidden" onchange="importJsonBackup(event)" />
+          </label>
+          <button onclick="downloadStandaloneSnapshot()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow transition" title="Muat turun salinan HTML lengkap dengan data semasa anda">
+            <i data-lucide="file-code-2" class="w-4 h-4"></i>
+            <span>Simpan HTML Data</span>
+          </button>
+          <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-600 transition">
+            <i data-lucide="printer" class="w-4 h-4 text-sky-300"></i>
+            <span>Cetak</span>
+          </button>
+          <button onclick="openResetModal()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-rose-950/80 hover:bg-rose-900 text-rose-200 border border-rose-700/60 transition">
+            <i data-lucide="rotate-ccw" class="w-4 h-4 text-rose-400"></i>
+            <span>Reset</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Key Appointments Bar -->
+      <div class="mt-4 pt-3 border-t border-slate-700/80 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
+          <div class="bg-amber-500/15 hover:bg-amber-500/20 transition border border-amber-400/50 rounded-xl px-3 py-2">
+          <div class="text-[10px] uppercase tracking-wider text-amber-300 font-extrabold">Quality Manager (QM)</div>
+          <div class="font-bold text-white truncate mt-0.5">727583 PW U II Mohamad Basir bin Mohamad Zuki</div>
+          <div class="text-[11px] text-amber-200 truncate">Stand-Alone &bull; Form 4: PUSUB.16SKN.KEJ.112/14</div>
+        </div>
+        <div class="bg-white/5 hover:bg-white/10 transition border border-white/10 rounded-xl px-3 py-2">
+  <!-- STICKY DESKTOP NAVIGATION TABS -->
+  <nav class="hidden md:block bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-30 shadow-sm no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar py-2.5">
+        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-tab flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition bg-navy-900 text-white shadow">
+          <i data-lucide="layout-dashboard" class="w-4 h-4 text-amber-400"></i>
+          <span>1. Dashboard &amp; Regulasi</span>
+        </button>
+        <button onclick="switchTab('folders')" id="nav-folders" class="nav-tab flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition text-slate-700 hover:bg-slate-100">
+          <i data-lucide="folder-kanban" class="w-4 h-4 text-sky-600"></i>
+          <span>2. Fail QM (QM-01 &ndash; QM-11)</span>
+        </button>
+        <button onclick="switchTab('personnel')" id="nav-personnel" class="nav-tab flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition text-slate-700 hover:bg-slate-100">
+          <i data-lucide="users" class="w-4 h-4 text-teal-600"></i>
+          <span>3. Personel &amp; Log 40 Jam</span>
+        </button>
+        <button onclick="switchTab('car')" id="nav-car" class="nav-tab flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition text-slate-700 hover:bg-slate-100">
+          <i data-lucide="clipboard-list" class="w-4 h-4 text-amber-600"></i>
+          <span>4. CAR Log &amp; 5-Whys RCA</span>
+        </button>
+        <button onclick="switchTab('calendar')" id="nav-calendar" class="nav-tab flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition text-slate-700 hover:bg-slate-100">
+          <i data-lucide="calendar-days" class="w-4 h-4 text-indigo-600"></i>
+          <span>5. Kalendar &amp; Takwim QM</span>
+        </button>
+        <button onclick="switchTab('links')" id="nav-links" class="nav-tab flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition text-slate-700 hover:bg-slate-100">
+          <i data-lucide="link-2" class="w-4 h-4 text-emerald-600"></i>
+          <span>6. Pautan QM, SAML &amp; Android</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FIXED MOBILE BOTTOM NAVIGATION BAR FOR ANDROID THUMBS -->
+  <nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0b192c] border-t-2 border-[#d4af37] text-slate-300 shadow-2xl no-print">
+    <div class="grid grid-cols-6 gap-0.5 px-1 py-1.5 text-[10px] font-bold">
+      <button onclick="switchTab('dashboard')" id="mnav-dashboard" class="mnav-tab flex flex-col items-center justify-center py-1.5 rounded-xl bg-amber-400 text-slate-950 font-black transition">
+        <i data-lucide="layout-dashboard" class="w-4 h-4 mb-0.5"></i>
+        <span>Utama</span>
+      </button>
+      <button onclick="switchTab('folders')" id="mnav-folders" class="mnav-tab flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 transition">
+        <i data-lucide="folder-kanban" class="w-4 h-4 mb-0.5"></i>
+        <span>Fail QM</span>
+      </button>
+      <button onclick="switchTab('personnel')" id="mnav-personnel" class="mnav-tab flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 transition">
+        <i data-lucide="users" class="w-4 h-4 mb-0.5"></i>
+        <span>Personel</span>
+      </button>
+      <button onclick="switchTab('car')" id="mnav-car" class="mnav-tab flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 transition">
+        <i data-lucide="clipboard-list" class="w-4 h-4 mb-0.5"></i>
+        <span>CAR/RCA</span>
+      </button>
+      <button onclick="switchTab('calendar')" id="mnav-calendar" class="mnav-tab flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 transition">
+        <i data-lucide="calendar-days" class="w-4 h-4 mb-0.5"></i>
+        <span>Kalendar</span>
+      </button>
+      <button onclick="switchTab('links')" id="mnav-links" class="mnav-tab flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 transition">
+        <i data-lucide="smartphone" class="w-4 h-4 mb-0.5"></i>
+        <span>Install</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+    <!-- GLOBAL LIVE KPI STRIP -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md transition flex items-center justify-between">
+        <div>
+          <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">Master Folders (QM-01&ndash;11)</p>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span id="kpiFolderPct" class="text-2xl font-black text-navy-900">0%</span>
+            <span id="kpiFolderSub" class="text-xs font-semibold text-slate-500">0/0 item</span>
+          </div>
+          <p class="text-[11px] text-teal-700 font-medium mt-1">Kawalan Dokumen &amp; Rekod QM</p>
+        </div>
+        <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center shrink-0">
+          <i data-lucide="folder-check" class="w-6 h-6"></i>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md transition flex items-center justify-between">
+        <div>
+          <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">Staf Patuh &amp; Log 40 Jam</p>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span id="kpiStaffReady" class="text-2xl font-black text-teal-700">0/0</span>
+            <span class="text-xs font-semibold text-slate-500">Lengkap</span>
+          </div>
+          <p class="text-[11px] text-slate-500 mt-1">30j Senggaraan/SOE + 10j Lain</p>
+        </div>
+        <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center shrink-0">
+          <i data-lucide="badge-check" class="w-6 h-6"></i>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md transition flex items-center justify-between">
+        <div>
+          <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">Master CAR Log (IQA / Audit)</p>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span id="kpiCarOpen" class="text-2xl font-black text-amber-600">0</span>
+            <span id="kpiCarTotal" class="text-xs font-semibold text-slate-500">Aktif / 0 Jumlah</span>
+          </div>
+          <p class="text-[11px] text-slate-500 mt-1">Level 1 (14h) &bull; Level 2 (60h)</p>
+        </div>
+        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+          <i data-lucide="shield-alert" class="w-6 h-6"></i>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md transition flex items-center justify-between">
+        <div>
+          <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">Takwim &amp; Kalendar QM</p>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span id="kpiCalDone" class="text-2xl font-black text-indigo-700">0/0</span>
+            <span class="text-xs font-semibold text-slate-500">Selesai</span>
+          </div>
+          <p class="text-[11px] text-slate-500 mt-1">IQA 12 Bln &bull; MRM Tahunan</p>
+        </div>
+        <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
+          <i data-lucide="calendar-check" class="w-6 h-6"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 1: DASHBOARD & REGULATORY QUICK REFERENCE
+    ====================================================================== -->
+    <section id="section-dashboard" class="app-section space-y-6">
+      <!-- Executive Welcome Card -->
+      <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <span class="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full">
+              <i data-lucide="compass" class="w-3.5 h-3.5"></i> Pusat Kawalan Kualiti AMTO No 16 Skuadron
+            </span>
+            <h2 class="text-xl sm:text-2xl font-black text-navy-900 mt-2">
+              Ringkasan Operasi &amp; Rujukan Regulasi Quality Manager (QM)
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+              Aplikasi bersepadu untuk mengurus rekod <strong>MSTAR 147</strong>, <strong>MSTAR 66 (SAML)</strong>, <strong>MTOE</strong>, dan <strong>TIM (PU 2504-002)</strong> bagi Sekolah Sistem Pesawat Beechcraft B200T. Semua perubahan disimpan secara automatik pada pelayar anda dan boleh di-<em>export</em> ke JSON/HTML untuk dimuat naik ke <strong>GitHub Pages</strong>.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 no-print shrink-0">
+            <button onclick="switchTab('car')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="clipboard-check" class="w-4 h-4"></i> Semak CAR &amp; 5-Whys
+            </button>
+            <button onclick="switchTab('calendar')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-navy-900 hover:bg-navy-800 text-white transition flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="calendar-plus" class="w-4 h-4 text-amber-300"></i> Edit Kalendar QM
+            </button>
+          </div>
+        </div>
+
+        <!-- Key Personnel Detailed Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-5">
+          <div class="rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase bg-navy-900 text-amber-300 rounded">AM &bull; 147.A.105(a)</span>
+              <i data-lucide="crown" class="w-4 h-4 text-amber-600"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-sm mt-2">Lt Kol Farrah Diba binti Ahmad Rostam TUDM</h3>
+            <p class="text-xs font-semibold text-sky-700 mt-0.5">Accountable Manager (Pegawai Memerintah)</p>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Memikul tanggungjawab korporat keseluruhan pematuhan MSTAR 147, meluluskan pelantikan dalaman, dan mempengerusikan <strong>MRM Tahunan (Yearly)</strong>.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase bg-sky-700 text-white rounded">TM &bull; 147.A.105(b)</span>
+              <i data-lucide="award" class="w-4 h-4 text-sky-700"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-sm mt-2">375160 Mej Vignesh a/l A.R Ramachandran TUDM</h3>
+            <p class="text-xs font-semibold text-teal-700 mt-0.5">Training Manager (Form 4: DGTA.213/8/8)</p>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Kelulusan MSTAR Form 4 diterima pada <strong>17 Mac 2026</strong>. Mengetuai operasi latihan Sekolah Sistem dan menandatangani <em>Certificate of Recognition (MSTAR Form 149)</em>.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border-2 border-amber-400/70 bg-gradient-to-b from-amber-50/50 to-white p-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase bg-amber-500 text-slate-950 rounded">QM &bull; 147.A.130(b)</span>
+              <i data-lucide="shield-check" class="w-4 h-4 text-amber-600"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-sm mt-2">727583 PW U II Mohamad Basir bin Mohamad Zuki</h3>
+            <p class="text-xs font-semibold text-amber-800 mt-0.5">Quality Manager (Stand-Alone &amp; Independent)</p>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Jawatan mesti <strong>berdiri sendiri &amp; bebas</strong> (<code>AMC 147.A.105(b)(5)</code>). Mengawal IQA, CAR/RCA, MRM, bank soalan, fail induk, dan <em>Indirect Approval</em> manual.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase bg-teal-700 text-white rounded">SSO &bull; Pilot</span>
+              <i data-lucide="plane" class="w-4 h-4 text-teal-700"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-sm mt-2">Safety Officer (Squadron Safety Officer / Pilot)</h3>
+            <p class="text-xs font-semibold text-teal-800 mt-0.5">Bukan Juruteknik &bull; Dikecualikan SAML &amp; Form 4</p>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Disandang oleh <strong>Pegawai Juruterbang (Pilot)</strong> keselamatan skuadron (<code>AMC 147.A.105(b)(1)</code> &amp; <code>MTOE Part 2.4(d)(4)</code>). Tiada syarat SAML atau MSTAR Form 4.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regulatory Rules & Operational Limits -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+          <h3 class="font-extrabold text-navy-900 text-base pb-3 border-b border-slate-100 flex items-center gap-2">
+            <i data-lucide="timer" class="w-5 h-5 text-amber-600"></i>
+            <span>Tempoh Masa Mandatori &amp; Pematuhan Regulasi</span>
+          </h3>
+          <div class="divide-y divide-slate-100 mt-2 text-xs">
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Notifikasi Pertukaran Key Personnel / MTOE</div>
+                <div class="text-slate-500">Maklum DGTA (<code>MSTAR Form 12</code> &amp; <code>Form 4</code>) &ndash; <code>AMC 147.A.150(1)(a)</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-sky-100 text-sky-800 shrink-0">7 Hari Bekerja</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Pengeluaran Laporan Audit (IQA / Course Eval)</div>
+                <div class="text-slate-500">Edaran selepas tamat audit &ndash; <code>TIM Part 5.1.6</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-sky-100 text-sky-800 shrink-0">7 Hari Bekerja</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Penutupan Level 1 Finding (Major CAR)</div>
+                <div class="text-slate-500">Ketidakpatuhan kritikal &ndash; <code>147.A.160</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-rose-100 text-rose-800 shrink-0">14 Hari Kalendar</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Penutupan Level 2 Finding (Minor CAR)</div>
+                <div class="text-slate-500">Prosedur / dokumentasi (cth: Cross-Audit 6/26) &ndash; <code>147.A.160</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-amber-100 text-amber-800 shrink-0">60 Hari Kalendar</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Internal Quality Audit (IQA) vs MRM</div>
+                <div class="text-slate-500">IQA sekurang-kurangnya setiap <strong>12 bulan</strong>; MRM <strong>sekali setahun (yearly)</strong></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-teal-100 text-teal-800 shrink-0">12 Bln / Tahunan</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Tempoh Simpanan Rekod Pelatih &amp; Staf</div>
+                <div class="text-slate-500">Rekod pelatih &amp; staf selepas tamat &ndash; <code>147.A.110</code> &amp; <code>147.A.125</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-indigo-100 text-indigo-800 shrink-0">Min 5 Tahun</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+          <h3 class="font-extrabold text-navy-900 text-base pb-3 border-b border-slate-100 flex items-center gap-2">
+            <i data-lucide="sliders" class="w-5 h-5 text-teal-600"></i>
+            <span>Had Kuantitatif &amp; Peraturan Teknikal Utama</span>
+          </h3>
+          <div class="divide-y divide-slate-100 mt-2 text-xs">
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Had Bilangan Pelatih (Teori &amp; Praktikal)</div>
+                <div class="text-slate-500">Rujukan <code>147.A.100(d)</code> &amp; <code>147.A.105(d)</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-slate-100 text-slate-800 shrink-0">Teori &le;28 | Praktikal &le;15</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Beban Mengajar Mingguan &amp; Nisbah Alat Bantu</div>
+                <div class="text-slate-500">Kawalan keletihan &amp; kemudahan &ndash; <code>TIM Part 2.5</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-slate-100 text-slate-800 shrink-0">&le;28 Jam/Mgg | Nisbah 8:1</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Markah Lulus Peperiksaan &amp; Set Soalan</div>
+                <div class="text-slate-500">Tiada penalti &ndash; 3 set soalan berbeza &ge;30% &ndash; <code>MSTAR 66 App III</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-emerald-100 text-emerald-800 shrink-0">Lulus &ge; 75%</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Updating Training Staf (Setiap 24 Bulan)</div>
+                <div class="text-slate-500">&ge;30 jam senggaraan/SOE/refresher + &ge;10 jam latihan lain &ndash; <code>147.A.105(h)</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-teal-100 text-teal-800 shrink-0">&ge; 40 Jam / 24 Bln</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Multi-Hatting &amp; TOR Mandatori</div>
+                <div class="text-slate-500">Gabungan Instructor/Examiner/Assessor sah (<code>AMC 147.A.105(b)(5)</code>); TOR wajib untuk pengajar/penguji/penilai (<code>147.A.110(b)</code>)</div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-amber-100 text-amber-800 shrink-0">Dibenarkan / Wajib</span>
+            </div>
+            <div class="py-2.5 flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-slate-800">Tempoh Sah Kurikulum Kursus</div>
+                <div class="text-slate-500">Semakan / lanjutan kesahan kurikulum &ndash; <code>AMC 147.A.145(g)</code></div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full font-extrabold bg-indigo-100 text-indigo-800 shrink-0">Setiap 2 Tahun</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 2: MASTER FOLDERS (QM-01 TO QM-11)
+    ====================================================================== -->
+    <section id="section-folders" class="app-section hidden space-y-5">
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-sky-800 bg-sky-50 border border-sky-200 px-2.5 py-1 rounded-full">
+            Struktur Fail Induk &amp; Partition Separator (QM-01 hingga QM-11)
+          </span>
+          <h2 class="text-xl font-black text-navy-900 mt-1.5">
+            Senarai Semak Master Folder Quality Manager
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Tandakan dokumen yang telah tersedia dalam fail fizikal kabinet QM, kemas kini lokasi rak, atau tambah dokumen baharu pada mana-mana fail.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 no-print">
+          <div class="relative">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input type="text" id="folderSearchInput" oninput="renderMasterFolders()" placeholder="Cari kod / item fail..." class="pl-9 pr-3 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-sky-500" />
+          </div>
+          <button onclick="setAllFoldersExpanded(true)" class="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">Buka Semua</button>
+          <button onclick="setAllFoldersExpanded(false)" class="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">Tutup Semua</button>
+        </div>
+      </div>
+
+      <div id="foldersListContainer" class="space-y-4"></div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 3: PERSONNEL, MULTI-HATTING & 40-HR UPDATING TRAINING
+    ====================================================================== -->
+    <section id="section-personnel" class="app-section hidden space-y-6">
+      <!-- Management & SSO Checklists -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+        <div class="border-b border-slate-100 pb-3">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded-full">
+            Fail QM-02 &bull; Management Personnel &amp; Safety Officer (Pilot)
+          </span>
+          <h2 class="text-lg sm:text-xl font-black text-navy-900 mt-1.5">
+            Kelengkapan Dokumen AM, TM, QM &amp; Safety Officer (Pilot)
+          </h2>
+          <p class="text-xs text-slate-600 mt-0.5">
+            <strong>Safety Officer (Pilot)</strong> ialah Pegawai Juruterbang keselamatan skuadron — dikecualikan daripada syarat SAML dan MSTAR Form 4 (<code>AMC 147.A.105(b)(1)</code> &amp; <code>MTOE Part 2.4(d)(4)</code>).
+          </p>
+        </div>
+        <div id="mgmtCardsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
+
+      <!-- Staff Multi-Hatting & 40-Hour Tracker -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-3">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">
+              Fail QM-03 &bull; Multi-Hatting &amp; 40-Hour Updating Training (24 Bulan)
+            </span>
+            <h2 class="text-lg sm:text-xl font-black text-navy-900 mt-1.5">
+              Daftar Induk Instructor, Knowledge Examiner &amp; Practical Assessor
+            </h2>
+            <p class="text-xs text-slate-600 mt-0.5">
+              Pantau gabungan peranan (<em>Multi-Hatting</em>), 6 dokumen wajib fail QM-03 (<code>B200TSS-G</code>, <code>TOR</code>, <code>CoC</code>, <code>SAML</code>, <code>Instructional</code>, <code>B200T</code>), serta jam <strong>Updating Training (&ge;30j Senggaraan/SOE + &ge;10j Lain = &ge;40j / 24 Bln)</strong>.
+            </p>
+          </div>
+          <button onclick="openStaffModal()" class="no-print inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold bg-navy-900 hover:bg-navy-800 text-white shadow transition shrink-0">
+            <i data-lucide="user-plus" class="w-4 h-4 text-amber-300"></i>
+            <span>+ Tambah Staf</span>
+          </button>
+        </div>
+
+        <div class="overflow-x-auto custom-scrollbar">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 uppercase text-[11px] border-b border-slate-200">
+                <th class="py-3 px-3 font-extrabold">Personel &amp; Peranan</th>
+                <th class="py-3 px-2 font-extrabold text-center">Kitaran 24 Bulan</th>
+                <th class="py-3 px-2 font-extrabold text-center">Dokumen Fail QM-03</th>
+                <th class="py-3 px-2 font-extrabold text-center">Senggaraan / SOE (&ge;30j)</th>
+                <th class="py-3 px-2 font-extrabold text-center">Latihan Lain (&ge;10j)</th>
+                <th class="py-3 px-2 font-extrabold text-center">Jumlah (&ge;40j)</th>
+                <th class="py-3 px-2 font-extrabold text-center">Status</th>
+                <th class="py-3 px-2 font-extrabold text-right no-print">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="staffTableBody" class="divide-y divide-slate-200"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 4: MASTER CAR LOG & 5-WHYS RCA (PEOPLE / ORGANISATION / PROCEDURE)
+    ====================================================================== -->
+    <section id="section-car" class="app-section hidden space-y-6">
+      <!-- CAR Header & Filters -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">
+            Fail QM-04 &bull; MSTAR 147.A.160 &bull; RCA: People / Organisation / Procedure
+          </span>
+          <h2 class="text-xl font-black text-navy-900 mt-1.5">
+            Master CAR Log &amp; Analisis 5-Whys (Bermula IQA Cross-Audit No: 6/26)
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Kategori punca akar ditetapkan secara ketat kepada <strong>People</strong>, <strong>Organisation</strong>, dan <strong>Procedure</strong>. Tambah rekod CAR baharu (Bil 1, 2, 3... hingga 10+) pada bila-bila masa.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 no-print">
+          <select id="carCategoryFilter" onchange="renderCarSection()" class="px-3 py-2 rounded-xl border border-slate-300 bg-white text-xs font-bold text-slate-700">
+            <option value="ALL">Semua Kategori RCA</option>
+            <option value="People">People</option>
+            <option value="Organisation">Organisation</option>
+            <option value="Procedure">Procedure</option>
+          </select>
+          <select id="carStatusFilter" onchange="renderCarSection()" class="px-3 py-2 rounded-xl border border-slate-300 bg-white text-xs font-bold text-slate-700">
+            <option value="ALL">Semua Status</option>
+            <option value="Open">Open</option>
+            <option value="Dalam Tindakan">Dalam Tindakan</option>
+            <option value="Menunggu Verifikasi">Menunggu Verifikasi</option>
+            <option value="Closed">Closed</option>
+          </select>
+          <button onclick="openCarModal()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-navy-900 hover:bg-navy-800 text-white shadow transition">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-amber-300"></i>
+            <span>+ Tambah CAR</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- RCA 3-Category Breakdown Bar -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl p-4 border-l-4 border-sky-600 border border-slate-200 shadow-sm flex items-center justify-between">
+          <div>
+            <div class="text-xs font-extrabold uppercase text-sky-700">Kategori RCA: People</div>
+            <div id="rcaCountPeople" class="text-2xl font-black text-slate-900 mt-0.5">0</div>
+            <div class="text-[11px] text-slate-500">Kelayakan, QTE, 40j &amp; Kompetensi</div>
+          </div>
+          <i data-lucide="user-cog" class="w-7 h-7 text-sky-600/70"></i>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border-l-4 border-teal-600 border border-slate-200 shadow-sm flex items-center justify-between">
+          <div>
+            <div class="text-xs font-extrabold uppercase text-teal-700">Kategori RCA: Organisation</div>
+            <div id="rcaCountOrg" class="text-2xl font-black text-slate-900 mt-0.5">0</div>
+            <div class="text-[11px] text-slate-500">Kawalan Pusat QM, Struktur &amp; Fasiliti</div>
+          </div>
+          <i data-lucide="building-2" class="w-7 h-7 text-teal-600/70"></i>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border-l-4 border-amber-500 border border-slate-200 shadow-sm flex items-center justify-between">
+          <div>
+            <div class="text-xs font-extrabold uppercase text-amber-700">Kategori RCA: Procedure</div>
+            <div id="rcaCountProc" class="text-2xl font-black text-slate-900 mt-0.5">0</div>
+            <div class="text-[11px] text-slate-500">Manual MTOE/TIM, SOP &amp; Rujukan</div>
+          </div>
+          <i data-lucide="file-text" class="w-7 h-7 text-amber-600/70"></i>
+        </div>
+      </div>
+
+      <!-- CAR Cards & Master Table -->
+      <div id="carCardsContainer" class="space-y-4"></div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 5: EDITABLE CALENDAR & QM ROUTINE SCHEDULE
+    ====================================================================== -->
+    <section id="section-calendar" class="app-section hidden space-y-6">
+      <!-- Calendar Header -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-800 bg-indigo-50 border border-indigo-200 px-2.5 py-1 rounded-full">
+            Perancang Operasi QM &bull; Boleh Edit Sepenuhnya
+          </span>
+          <h2 class="text-xl font-black text-navy-900 mt-1.5">
+            Kalendar Interaktif &amp; Takwim Tugas Quality Manager
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Klik mana-mana tarikh pada kalendar atau klik <strong>"+ Tambah Aktiviti"</strong> untuk menambah, mengedit tarikh, menukar status, atau memadam aktiviti QM.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 no-print">
+          <select id="calCatFilter" onchange="renderCalendarModule()" class="px-3 py-2 rounded-xl border border-slate-300 bg-white text-xs font-bold text-slate-700">
+            <option value="ALL">Semua Kategori</option>
+            <option value="IQA">IQA (12 Bulan)</option>
+            <option value="MRM">MRM (Tahunan)</option>
+            <option value="CAR">CAR / Audit Due Date</option>
+            <option value="COURSE">Course Eval / Peperiksaan</option>
+            <option value="FOLDER">Semakan Fail / Manual</option>
+            <option value="VALIDITY">Kurikulum (2 Thn) / 40j</option>
+          </select>
+          <button onclick="openEventModal()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-navy-900 hover:bg-navy-800 text-white shadow transition">
+            <i data-lucide="calendar-plus" class="w-4 h-4 text-amber-300"></i>
+            <span>+ Tambah Aktiviti</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Calendar Grid + Editable Schedule -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-7 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <button onclick="shiftCalendarMonth(-1)" class="p-2 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+              </button>
+              <h3 id="calMonthHeading" class="text-base sm:text-lg font-black text-navy-900 min-w-[165px] text-center">
+                November 2026
+              </h3>
+              <button onclick="shiftCalendarMonth(1)" class="p-2 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+            <button onclick="jumpToCurrentCalMonth()" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+              Nov 2026
+            </button>
+          </div>
+
+          <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-extrabold uppercase tracking-wider text-slate-500 pb-2 border-b border-slate-200">
+            <div>Isn</div>
+            <div>Sel</div>
+            <div>Rab</div>
+            <div>Kha</div>
+            <div>Jum</div>
+            <div class="text-amber-600">Sab</div>
+            <div class="text-rose-600">Aha</div>
+          </div>
+          <div id="calDaysGrid" class="grid grid-cols-7 gap-1.5 mt-2"></div>
+        </div>
+
+        <div class="lg:col-span-5 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div>
+              <h3 class="font-extrabold text-navy-900 text-base">Senarai Jadual &amp; Aktiviti QM</h3>
+              <p class="text-xs text-slate-500">Klik badge status untuk kitaran status pantas</p>
+            </div>
+            <span id="calFilteredCount" class="px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-800">0 Aktiviti</span>
+          </div>
+          <div id="calEventsList" class="divide-y divide-slate-100 mt-2 overflow-y-auto max-h-[520px] pr-1 custom-scrollbar"></div>
+        </div>
+      </div>
+
+      <!-- Editable Routine Schedule Table -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div>
+            <h3 class="font-extrabold text-navy-900 text-base">Jadual Kekerapan Tugas Rutin QM (Boleh Edit)</h3>
+            <p class="text-xs text-slate-500">Kemas kini kekerapan, tindakan utama, atau bukti rekod mengikut keperluan operasi semasa.</p>
+          </div>
+          <button onclick="addRoutineRow()" class="no-print inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-bold bg-teal-600 hover:bg-teal-500 text-white transition">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i> Tambah Baris Rutin
+          </button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 uppercase text-[11px] border-b border-slate-200">
+                <th class="py-2.5 px-3 font-extrabold">Kekerapan</th>
+                <th class="py-2.5 px-3 font-extrabold">Tindakan Utama QM</th>
+                <th class="py-2.5 px-3 font-extrabold">Bukti Rekod (*Objective Evidence*)</th>
+                <th class="py-2.5 px-2 font-extrabold text-right no-print">Padam</th>
+              </tr>
+            </thead>
+            <tbody id="routineTableBody" class="divide-y divide-slate-200"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 6: QM & SAML LINKS DIRECTORY + GITHUB PAGES GUIDE
+    ====================================================================== -->
+    <section id="section-links" class="app-section hidden space-y-6">
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
+              Direktori Pautan QM (MSTAR 147) &amp; SAML (MSTAR 66)
+            </span>
+            <h2 class="text-xl font-black text-navy-900 mt-1.5">
+              Pautan Portal, Google Form, Google Drive &amp; Sistem SAML
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600">
+              Tambah, edit, atau buka pautan laman web QM, Google Sites, Google Form pengumpulan maklumat/gambar staf, dan pangkalan data SAML No 16 Skuadron.
+            </p>
+          </div>
+          <button onclick="openLinkModal()" class="no-print inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold bg-navy-900 hover:bg-navy-800 text-white shadow transition shrink-0">
+            <i data-lucide="link" class="w-4 h-4 text-amber-300"></i>
+            <span>+ Tambah Pautan</span>
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 uppercase text-[11px] border-b border-slate-200">
+                <th class="py-3 px-3 font-extrabold">Kategori</th>
+                <th class="py-3 px-3 font-extrabold">Nama Sistem / Dokumen</th>
+                <th class="py-3 px-3 font-extrabold">Pautan / URL</th>
+                <th class="py-3 px-3 font-extrabold">Catatan</th>
+                <th class="py-3 px-2 font-extrabold text-right no-print">Tindakan</th>
+              </tr>
+            </thead>
+      <!-- GitHub Pages & Android PWA Hosting Guide Card -->
+      <div class="bg-gradient-to-br from-[#0b192c] to-[#122c54] text-white rounded-2xl p-6 border border-sky-400/30 shadow-lg space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 rounded-xl bg-amber-400 text-slate-950 shrink-0">
+              <i data-lucide="smartphone" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-black">Cara Hoskan di GitHub Pages &amp; Install Terus di Telefon Android</h3>
+              <p class="text-xs text-slate-300">Aplikasi ini telah terbina dengan Web App Manifest (ikon 192x192 &amp; 512x512) &amp; Service Worker sokongan luar talian.</p>
+            </div>
+          </div>
+          <button onclick="triggerAndroidInstall()" class="px-4 py-2.5 rounded-xl text-xs font-black bg-amber-400 hover:bg-amber-300 text-slate-950 shadow transition shrink-0">
+            Pasang Sekarang (Install App)
+          </button>
+        </div>
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <li class="bg-white/10 rounded-xl p-4 border border-white/10 space-y-1.5">
+            <div class="font-extrabold text-amber-300">1. Muat Naik ke GitHub Pages</div>
+            <p class="text-slate-200 leading-relaxed">
+              Cipta repositori di <strong>github.com</strong> (cth: <code>qm-amto-16skn</code>), muat naik fail ini sebagai <strong><code>index.html</code></strong>, dan aktifkan <strong>Settings &gt; Pages &gt; Branch: main</strong>.
+            </p>
+          </li>
+          <li class="bg-white/10 rounded-xl p-4 border border-white/10 space-y-1.5">
+            <div class="font-extrabold text-sky-300">2. Buka di Google Chrome Android</div>
+            <p class="text-slate-200 leading-relaxed">
+              Buka pautan <code>https://&lt;username&gt;.github.io/qm-amto-16skn/</code> menggunakan pelayar <strong>Google Chrome</strong> pada telefon Android anda.
+            </p>
+          </li>
+          <li class="bg-white/10 rounded-xl p-4 border border-white/10 space-y-1.5">
+            <div class="font-extrabold text-teal-300">3. Klik "Install App / Add to Home Screen"</div>
+            <p class="text-slate-200 leading-relaxed">
+              Tekan butang <strong>Install Android App</strong> di bahagian atas aplikasi (atau menu Chrome <strong>&#8942; &gt; Add to Home screen / Install app</strong>). Ikon <strong>QM B200T</strong> akan muncul seperti aplikasi Android sebenar!
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy-950 text-slate-400 border-t border-slate-800 py-4 text-xs no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div>
+        <span class="font-bold text-amber-400">JEJAK SAMUDRA &bull; NO 16 SKUADRON</span> &mdash; Beechcraft B200T Aircraft System School (AMTO), PU Subang.
+      </div>
+      <div>
+        Auto-save aktif (<em>localStorage</em>) &bull; Gunakan <strong>Export JSON</strong> / <strong>Simpan HTML Data</strong> untuk sandaran penuh.
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       MODALS: STAFF, CAR + 5-WHYS, CALENDAR EVENT, LINK, GITHUB, RESET
+  ====================================================================== -->
+
+  <!-- Staff Modal -->
+  <div id="staffModal" class="fixed inset-0 bg-slate-950/65 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="text-base font-black text-navy-900">Tambah / Kemas Kini Rekod Staf (QM-03)</h3>
+        <button onclick="closeModal('staffModal')" class="text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form id="staffForm" onsubmit="saveStaffForm(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="staffEditIndex" />
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">No. Tentera, Pangkat &amp; Nama Penuh</label>
+          <input type="text" id="staffNameInput" required placeholder="Cth: 728xxx F/Sjn Ahmad bin Ali" class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Trit / Kategori SAML</label>
+            <input type="text" id="staffScopeInput" placeholder="Cth: B1.1 Airframe &amp; Engine" class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">No. Certificate of Competency (CoC)</label>
+            <input type="text" id="staffCocInput" placeholder="Cth: B200TSS/2026/05" class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1.5">Peranan Dilantik (Multi-Hatting — AMC 147.A.105(b)(5))</label>
+          <div class="flex flex-wrap gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <label class="inline-flex items-center gap-1.5 font-semibold cursor-pointer">
+              <input type="checkbox" id="roleInstInput" class="rounded text-navy-900" /> Instructor
+            </label>
+            <label class="inline-flex items-center gap-1.5 font-semibold cursor-pointer">
+              <input type="checkbox" id="roleExamInput" class="rounded text-navy-900" /> Knowledge Examiner
+            </label>
+            <label class="inline-flex items-center gap-1.5 font-semibold cursor-pointer">
+              <input type="checkbox" id="roleAssrInput" class="rounded text-navy-900" /> Practical Assessor
+            </label>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Tarikh Lantikan</label>
+            <input type="date" id="staffStartInput" required class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Tarikh Tamat Kitaran 24 Bulan</label>
+            <input type="date" id="staffEndInput" required class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Jam Senggaraan / SOE (Sasaran &ge;30j)</label>
+            <input type="number" step="0.5" min="0" id="staffMaintInput" required class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Jam Latihan Lain / HF (Sasaran &ge;10j)</label>
+            <input type="number" step="0.5" min="0" id="staffOtherInput" required class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+        </div>
+        <div class="flex justify-end gap-2 pt-3 border-t border-slate-100">
+          <button type="button" onclick="closeModal('staffModal')" class="px-4 py-2 rounded-xl font-semibold bg-slate-100 text-slate-700">Batal</button>
+          <button type="submit" class="px-4 py-2 rounded-xl font-bold bg-navy-900 text-white">Simpan Staf</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- CAR + 5-Whys Modal -->
+  <div id="carModal" class="fixed inset-0 bg-slate-950/65 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="text-base font-black text-navy-900">Tambah / Edit CAR &amp; Analisis 5-Whys (RCA)</h3>
+        <button onclick="closeModal('carModal')" class="text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form id="carForm" onsubmit="saveCarForm(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="carIdInput" />
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">No. CAR / Rujukan</label>
+            <input type="text" id="carCodeInput" required placeholder="Cth: CAR No: 03" class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Sumber Audit</label>
+            <input type="text" id="carAuditSourceInput" required placeholder="Cth: IQA Cross-Audit No: 6/26" class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Klausa MSTAR / TIM</label>
+            <input type="text" id="carClauseInput" required placeholder="Cth: 147.A.130(b)" class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Tahap Finding</label>
+            <select id="carLevelInput" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white">
+              <option value="Level 2">Level 2 (60 Hari)</option>
+              <option value="Level 1">Level 1 (14 Hari)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Kategori RCA</label>
+            <select id="carCategoryInput" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white">
+              <option value="Organisation">Organisation</option>
+              <option value="Procedure">Procedure</option>
+              <option value="People">People</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Tarikh Audit</label>
+            <input type="date" id="carAuditDateInput" required class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Tarikh Akhir (Due)</label>
+            <input type="date" id="carDueDateInput" required class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Status CAR</label>
+            <select id="carStatusInput" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white">
+              <option value="Open">Open</option>
+              <option value="Dalam Tindakan">Dalam Tindakan</option>
+              <option value="Menunggu Verifikasi">Menunggu Verifikasi</option>
+              <option value="Closed">Closed</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Rujukan Bukti / Memo Penutup</label>
+            <input type="text" id="carEvidenceInput" placeholder="Cth: Memo PUSUB.16SKN.KEJ.112/..." class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Ringkasan Penemuan (Finding Statement)</label>
+          <textarea id="carFindingInput" rows="2" required class="w-full px-3 py-2 rounded-xl border border-slate-300"></textarea>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Corrective Action (Tindakan Pembetulan)</label>
+            <textarea id="carCorrectiveInput" rows="2" required class="w-full px-3 py-2 rounded-xl border border-slate-300"></textarea>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Preventive Action (Tindakan Pencegahan)</label>
+            <textarea id="carPreventiveInput" rows="2" required class="w-full px-3 py-2 rounded-xl border border-slate-300"></textarea>
+          </div>
+        </div>
+
+        <!-- 5-Whys Box -->
+        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+          <div class="font-extrabold text-navy-900 text-xs uppercase tracking-wider">Analisis 5-Whys (Punca Akar Sebenar)</div>
+          <input type="text" id="why1Input" placeholder="Why 1: Mengapa ketidakpatuhan ini berlaku?" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white" />
+          <input type="text" id="why2Input" placeholder="Why 2: Mengapa keadaan pada Why 1 berlaku?" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white" />
+          <input type="text" id="why3Input" placeholder="Why 3: Mengapa proses/semakan sedia ada tidak mengesannya?" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white" />
+          <input type="text" id="why4Input" placeholder="Why 4: Mengapa kawalan dokumen/organisasi belum diperkukuh?" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white" />
+          <input type="text" id="why5Input" placeholder="Why 5 (Root Cause): Punca akar asas (People / Organisation / Procedure)..." class="w-full px-3 py-1.5 rounded-lg border border-amber-400 bg-amber-50/40 font-semibold" />
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+          <button type="button" onclick="closeModal('carModal')" class="px-4 py-2 rounded-xl font-semibold bg-slate-100 text-slate-700">Batal</button>
+          <button type="submit" class="px-4 py-2 rounded-xl font-bold bg-navy-900 text-white">Simpan CAR &amp; RCA</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Calendar Event Modal -->
+  <div id="eventModal" class="fixed inset-0 bg-slate-950/65 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="text-base font-black text-navy-900">Tambah / Edit Aktiviti Kalendar QM</h3>
+        <button onclick="closeModal('eventModal')" class="text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form id="eventForm" onsubmit="saveEventForm(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="eventIdInput" />
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Tajuk Aktiviti / Tugas QM</label>
+          <input type="text" id="eventTitleInput" required placeholder="Cth: Pelaksanaan IQA Tahunan (OPPDMEF)" class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Tarikh</label>
+            <input type="date" id="eventDateInput" required class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Kategori</label>
+            <select id="eventCategoryInput" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white">
+              <option value="IQA">IQA (12 Bulan)</option>
+              <option value="MRM">MRM (Tahunan)</option>
+              <option value="CAR">CAR / Audit Due Date</option>
+              <option value="COURSE">Course Eval / Peperiksaan</option>
+              <option value="FOLDER">Semakan Fail / Manual</option>
+              <option value="VALIDITY">Kurikulum (2 Thn) / 40j</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Klausa / Rujukan</label>
+            <input type="text" id="eventClauseInput" placeholder="Cth: 147.A.130(b)" class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Status</label>
+            <select id="eventStatusInput" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white">
+              <option value="Dirancang">Dirancang</option>
+              <option value="Dalam Tindakan">Dalam Tindakan</option>
+              <option value="Selesai">Selesai</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Catatan</label>
+          <textarea id="eventNotesInput" rows="2" class="w-full px-3 py-2 rounded-xl border border-slate-300"></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+          <button type="button" onclick="closeModal('eventModal')" class="px-4 py-2 rounded-xl font-semibold bg-slate-100 text-slate-700">Batal</button>
+          <button type="submit" class="px-4 py-2 rounded-xl font-bold bg-navy-900 text-white">Simpan Aktiviti</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Link Modal -->
+  <div id="linkModal" class="fixed inset-0 bg-slate-950/65 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="text-base font-black text-navy-900">Tambah / Edit Pautan QM &amp; SAML</h3>
+        <button onclick="closeModal('linkModal')" class="text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form id="linkForm" onsubmit="saveLinkForm(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="linkEditIndex" />
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Kategori</label>
+          <select id="linkCategoryInput" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white">
+            <option value="QM Portal & Form">QM Portal &amp; Form (MSTAR 147)</option>
+            <option value="SAML & DGTA">SAML &amp; DGTA (MSTAR 66)</option>
+            <option value="TUDM Portal">Portal Rasmi TUDM</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Nama Pautan / Sistem</label>
+          <input type="text" id="linkTitleInput" required placeholder="Cth: Google Form Kemas Kini Staf AMTO" class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">URL (https://...)</label>
+          <input type="url" id="linkUrlInput" required placeholder="https://..." class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Catatan</label>
+          <input type="text" id="linkNoteInput" placeholder="Keterangan ringkas..." class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+  <!-- Android & GitHub Install Modal -->
+  <div id="androidGuideModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="text-base font-black text-navy-900 flex items-center gap-2">
+          <i data-lucide="smartphone" class="w-5 h-5 text-teal-600"></i>
+          <span>Panduan Install Aplikasi di Android (PWA)</span>
+        </h3>
+        <button onclick="closeModal('androidGuideModal')" class="text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="text-xs text-slate-700 space-y-3 leading-relaxed">
+        <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-950">
+          <strong>Nota Penting Android:</strong> Sistem keselamatan Android Chrome memerlukan aplikasi dibuka melalui pautan <strong>HTTPS</strong> (seperti <strong>GitHub Pages</strong>) untuk memaparkan ikon <em>Install App</em> secara automatik pada Home Screen.
+        </div>
+        <p><strong>Langkah A — Muat Naik ke GitHub Pages:</strong></p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Simpan fail ini sebagai <code class="bg-slate-100 px-1.5 py-0.5 rounded font-bold">index.html</code> (atau klik <strong>Simpan HTML Data</strong> jika anda sudah kemas kini data).</li>
+          <li>Muat naik ke repositori GitHub anda dan aktifkan <strong>Settings &gt; Pages &gt; Branch: main</strong>.</li>
+        </ul>
+        <p><strong>Langkah B — Pasang Pada Telefon Android:</strong></p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Buka pautan GitHub Pages tersebut menggunakan <strong>Google Chrome</strong> di Android.</li>
+          <li>Tekan butang <strong>Install Android App</strong> di bawah, ATAU tekan ikon tiga titik <strong>(&#8942;)</strong> di penjuru kanan atas Chrome &gt; pilih <strong>Add to Home screen</strong> / <strong>Install app</strong>.</li>
+          <li>Aplikasi akan dipasang dengan mod skrin penuh (<em>Standalone</em>) tanpa bar alamat pelayar.</li>
+        </ul>
+      </div>
+      <div class="flex flex-wrap justify-end gap-2 pt-2 border-t border-slate-100">
+        <button onclick="triggerAndroidInstall()" class="px-4 py-2 rounded-xl text-xs font-black bg-amber-400 hover:bg-amber-300 text-slate-950">Pasang Sekarang</button>
+        <button onclick="closeModal('androidGuideModal')" class="px-4 py-2 rounded-xl text-xs font-bold bg-navy-900 text-white">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reset Confirmation Modal -->
+  <div id="resetModal" class="fixed inset-0 bg-slate-950/65 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center gap-3 text-rose-700">
+        <div class="p-2.5 rounded-full bg-rose-100"><i data-lucide="alert-triangle" class="w-6 h-6"></i></div>
+        <h3 class="text-base font-black">Reset Semua Data Ke Nilai Asal?</h3>
+      </div>
+      <p class="text-xs text-slate-600 leading-relaxed">
+        Semua perubahan pada checklist, staf, CAR/5-Whys, kalendar, dan pautan akan dikembalikan kepada data asal. Pastikan anda telah membuat <strong>Export JSON</strong> jika ingin menyimpan perubahan semasa.
+      </p>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeModal('resetModal')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700">Batal</button>
+        <button onclick="confirmResetState()" class="px-4 py-2 rounded-xl text-xs font-bold bg-rose-600 text-white hover:bg-rose-700">Ya, Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-2 bg-navy-950 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl border border-amber-400/50">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-400"></i>
+    <span id="toastText">Disimpan.</span>
+  </div>
+
+  <!-- =====================================================================
+       JAVASCRIPT APPLICATION STATE & RENDERERS
+  ====================================================================== -->
+  <script>
+    const STORAGE_KEY = 'QM_AMTO_16SKN_JEJAK_SAMUDRA_V1';
+
+    // Embedded snapshot hook for standalone HTML export
+    window.__EMBEDDED_QM_SNAPSHOT__ = null;
+
+    function getInitialState() {
+      return {
+        customCrestDataUrl: '',
+        folders: [
+          {
+            code: 'QM-01',
+            title: 'Regulatory, Approvals & Controlled Manuals',
+            desc: 'Sijil kelulusan AMTO (MSTAR Form 11), MTOE, TIM (PU 2504-002), Floor Plan fasiliti & rekod pindaan.',
+            clause: '147.A.130(d) & 147.A.140',
+            location: 'Kabinet QM - Rak 1',
+            expanded: true,
+            items: [
+              { text: 'Sijil Kelulusan AMTO (MSTAR Form 11) yang sah', checked: true },
+              { text: 'Salinan Induk MTOE & List of Effective Pages (LEP)', checked: true },
+              { text: 'Salinan Induk TIM (PU 2504-002) & Pelan Lantai Fasiliti (Floor Plan dalam TIM Part 6 Appendix II & rujukan silang 2.11(c)(3))', checked: true },
+              { text: 'Borang Pindaan B200TSS-M (Document Change Request), B200TSS-N (Record of Revision) & Senarai Agihan (Copy 1-11)', checked: false }
+            ]
+          },
+          {
+            code: 'QM-02',
+            title: 'Management Personnel & Safety Officer Records',
+            desc: 'Rekod kelayakan, kelulusan MSTAR Form 4 DGTA, memo pelantikan dalaman AM, TM, QM & Safety Officer (Pilot).',
+            clause: '147.A.105(a)&(b) & MTOE Part 2.4',
+            location: 'Kabinet QM - Rak 1',
+            expanded: false,
+            items: [
+              { text: 'Seksyen 2A — Accountable Manager (Lt Kol Farrah Diba binti Ahmad Rostam TUDM): Surat jawatan CO & Akuan AM', checked: true },
+              { text: 'Seksyen 2B — Training Manager (375160 Mej Vignesh TUDM): Surat DGTA.213/8/8 (17 Mac 2026), MSTAR Form 4, Memo Lantikan CO, Ijazah Mekanikal UPNM & sijil kursus', checked: true },
+              { text: 'Seksyen 2C — Quality Manager (727583 PW U II Mohamad Basir): MSTAR Form 4, Memo Lantikan CO, sijil audit/airworthiness/B200T & log latihan', checked: false },
+              { text: 'Seksyen 2D — Safety Officer (Pilot / Pegawai Keselamatan Skuadron): Memo Lantikan Dalaman CO, sijil keselamatan & kelayakan pesawat B200T (tanpa syarat SAML/Form 4)', checked: true }
+            ]
+          },
+          {
+            code: 'QM-03',
+            title: 'Records of Instructors, Knowledge Examiners & Practical Assessors',
+            desc: 'Kawalan pusat fail individu staf (termasuk multi-hatting), TOR bertandatangan & log Updating Training 40 jam / 24 bulan.',
+            clause: '147.A.110(a)&(b) & 147.A.105(h)',
+            location: 'Kabinet QM - Rak 1',
+            expanded: false,
+            items: [
+              { text: 'Master Control Register & pemantauan Updating Training (40 jam / 24 bulan: >=30j senggaraan/SOE + >=10j latihan lain)', checked: true },
+              { text: 'Borang Rekod Kelayakan (B200TSS-G) & Terms of Reference (TOR - 147.A.110(b)) bertandatangan setiap staf', checked: true },
+              { text: 'Certificate of Competency / Authorisation sah mengikut peranan (Instructor / Examiner / Assessor)', checked: true },
+              { text: 'Salinan SAML (MSTAR 66), B200T Type Course, Instructional Techniques, Assessor Course & Human Factors', checked: false }
+            ]
+          },
+          {
+            code: 'QM-04',
+            title: 'Internal Quality Audit (IQA), External Audit & CAR Tracker',
+            desc: 'Jadual tahunan IQA (12 bulan, 7 elemen OPPDMEF), borang B200TSS-Q, laporan Cross-Audit / DGTA Form 22 & Master CAR Log / RCA.',
+            clause: '147.A.130(b) & 147.A.160',
+            location: 'Kabinet QM - Rak 2',
+            expanded: false,
+            items: [
+              { text: 'Jadual Perancangan Tahunan IQA (12 Bulan — 7 elemen OPPDMEF) & Senarai Semak B200TSS-Q', checked: true },
+              { text: 'Rekod IQA Cross-Audit No: 6/26 (Lead Auditor: PW U II Juhari bin Mohamed Isa, No 8 Skuadron) & Audit DGTA (Form 22)', checked: true },
+              { text: 'Master CAR Log, Analisis 5-Whys (People / Organisation / Procedure), Memo Pembetulan & Bukti Penutupan', checked: false }
+            ]
+          },
+          {
+            code: 'QM-05',
+            title: 'Management Review Meeting (MRM)',
+            desc: 'Mesyuarat Kajian Semula Pengurusan sekurang-kurangnya sekali setahun (yearly) dipengerusikan oleh Accountable Manager.',
+            clause: '147.A.130(c) & AMC 147.A.130(c)',
+            location: 'Kabinet QM - Rak 2',
+            expanded: false,
+            items: [
+              { text: 'Memo Panggilan Mesyuarat MRM Tahunan & Senarai Kehadiran', checked: false },
+              { text: 'Slaid Pembentangan QM (Status IQA, CAR/RCA, Maklum Balas Pelatih, Staf & Fasiliti)', checked: false },
+              { text: 'Minit Mesyuarat MRM Disahkan oleh Accountable Manager & Tindakan Susulan', checked: false }
+            ]
+          },
+          {
+            code: 'QM-06',
+            title: 'Course Approval, Curriculum Validity & Course Evaluation',
+            desc: 'Kelulusan kurikulum (CTO B200T), semakan kesahan kurikulum setiap 2 tahun, laporan Course Evaluation Audit & maklum balas pelatih.',
+            clause: '147.A.145(g) & TIM Part 5.1.5',
+            location: 'Kabinet QM - Rak 2',
+            expanded: false,
+            items: [
+              { text: 'Kelulusan Kurikulum & Training Specification Standard (CTO B200T)', checked: true },
+              { text: 'Log Pemantauan Kesahan Kurikulum (Setiap 2 Tahun) & Lanjutan SAO', checked: true },
+              { text: 'Laporan Course Evaluation Audit & Analisis Borang Maklum Balas Pelatih', checked: false }
+            ]
+          },
+          {
+            code: 'QM-07',
+            title: 'Examination Integrity & Question Bank Control',
+            desc: 'Lantikan Examiner oleh QM (bebas konflik kepentingan), semakan B200TSS-E (3 set soalan >=30% berbeza, lulus 75%) & keselamatan bank soalan.',
+            clause: '147.A.135 & 147.A.305',
+            location: 'Kabinet QM - Rak 3 (Berkunci)',
+            expanded: false,
+            items: [
+              { text: 'Surat Lantikan Knowledge Examiner & Practical Assessor oleh QM (tidak mengajar subjek/modul yang diuji)', checked: true },
+              { text: 'Borang Pengesahan Kertas Soalan (B200TSS-E) & Kawalan Markah Lulus 75%', checked: true },
+              { text: 'Rekod Audit Keselamatan Kabinet / Bilik Kebal Bank Soalan', checked: false }
+            ]
+          },
+          {
+            code: 'QM-08',
+            title: 'Certificate of Recognition (CoR) & Student Archive Verification',
+            desc: 'Daftar sijil MSTAR Form 149, verifikasi rekod pelatih (B200TSS-A/B/C/S), buku log OJT/SOE (B200TSS-U) & simpanan min 5 tahun.',
+            clause: '147.A.125 & 147.A.145(a)(6)',
+            location: 'Kabinet QM - Rak 3',
+            expanded: false,
+            items: [
+              { text: 'Buku Daftar Induk Pengeluaran Certificate of Recognition (MSTAR Form 149)', checked: true },
+              { text: 'Rekod Verifikasi Fail Pelatih (B200TSS-A Kehadiran, B200TSS-B Teori, B200TSS-C/S Praktikal, B200TSS-U OJT/SOE)', checked: true },
+              { text: 'Log Pemantauan Tempoh Simpanan Arkib Pelatih (Minimum 5 Tahun / sehingga ROD)', checked: true }
+            ]
+          },
+          {
+            code: 'QM-09',
+            title: 'Surat Menyurat Rasmi & Memo Dalaman AMTO',
+            desc: 'Fail rujukan surat keluar/masuk PUSUB.16SKN.KEJ.112/14 dan memo arahan dalaman berkaitan operasi AMTO.',
+            clause: 'Kawalan Pentadbiran PUSUB.16SKN.KEJ.112/14',
+            location: 'Kabinet QM - Rak 4',
+            expanded: false,
+            items: [
+              { text: 'Indeks Surat Menyurat Rasmi (PUSUB.16SKN.KEJ.112/14)', checked: true },
+              { text: 'Salinan Memo Dalaman Pelantikan, Arahan & Penutup CAR', checked: false }
+            ]
+          },
+          {
+            code: 'QM-10',
+            title: 'Facility, Instructional Equipment & OSH Compliance',
+            desc: 'Kebenaran penggunaan fasiliti senggaraan/praktikal Flait Kejuruteraan, nisbah alat bantuan 8:1, kapasiti kelas & pematuhan OSH.',
+            clause: '147.A.100 & 147.A.115',
+            location: 'Kabinet QM - Rak 4',
+            expanded: false,
+            items: [
+              { text: 'Kebenaran / Koordinasi Fasiliti Senggaraan & Praktikal Flait Kejuruteraan', checked: true },
+              { text: 'Rekod Kawalan Kapasiti Kelas (Teori <=28, Praktikal <=15, Beban <=28j/mgg, Nisbah 8:1) & Laporan OSH', checked: false }
+            ]
+          },
+          {
+            code: 'QM-11',
+            title: 'SAML & Aircraft Maintenance Licencing Coordination',
+            desc: 'Koordinasi permohonan/pembaharuan State Aircraft Maintenance Licence (SAML) MSTAR 66 dan senarai pemegang SAML aktif skuadron.',
+            clause: 'MSTAR 66 Coordination',
+            location: 'Kabinet QM - Rak 4',
+            expanded: false,
+            items: [
+              { text: 'Daftar Pemegang SAML Aktif No 16 Skuadron (B1.1 / B2)', checked: true },
+              { text: 'Rekod Semakan Permohonan / Pembaharuan SAML ke DGTA', checked: true }
+            ]
+          }
+        ],
+        mgmtPersonnel: [
+          {
+            role: 'Accountable Manager (AM)',
+            name: 'Lt Kol Farrah Diba binti Ahmad Rostam TUDM',
+            ref: 'MSTAR 147.A.105(a) • Pegawai Memerintah No 16 Skn',
+            docs: [
+              { label: 'Surat Pelantikan / Kuasa Jawatan CO No 16 Skn', checked: true },
+              { label: 'Pernyataan Komitmen Accountable Manager (MTOE)', checked: true },
+              { label: 'Rekod Pengalaman Pengurusan Pertahanan / Penerbangan', checked: true }
+            ]
+          },
+          {
+            role: 'Training Manager (TM)',
+            name: '375160 Mej Vignesh a/l A.R Ramachandran TUDM',
+            ref: 'MSTAR 147.A.105(b) • Form 4 Approved: DGTA.213/8/8 (17 Mac 2026)',
+            docs: [
+              { label: 'Surat Kelulusan DGTA (DGTA.213/8/8) & MSTAR Form 4', checked: true },
+              { label: 'Memo Pelantikan Dalaman daripada Accountable Manager', checked: false },
+              { label: 'Ijazah Sarjana Muda Kejuruteraan Mekanikal (UPNM) & Sijil Kursus', checked: true },
+              { label: 'Log Continuation / Updating Training (40 Jam / 24 Bulan)', checked: true }
+            ]
+          },
+          {
+            role: 'Quality Manager (QM)',
+            name: '727583 PW U II Mohamad Basir bin Mohamad Zuki',
+            ref: 'MSTAR 147.A.130(b) • Stand-Alone & Independent',
+            docs: [
+              { label: 'Borang MSTAR Form 4 & Kelulusan DGTA', checked: false },
+              { label: 'Memo Pelantikan Dalaman daripada Accountable Manager', checked: true },
+              { label: 'Sijil Audit Kualiti / Airworthiness / B200T Type & Pengalaman', checked: true },
+              { label: 'Log Continuation / Updating Training', checked: true }
+            ]
+          },
+          {
+            role: 'Safety Officer (SSO — Pilot)',
+            name: 'Pegawai Juruterbang Keselamatan Skuadron (SSO)',
+            ref: 'AMC 147.A.105(b)(1) & MTOE Part 2.4(d)(4) • Bukan Juruteknik',
+            docs: [
+              { label: 'Memo Pelantikan Dalaman sebagai Safety Officer AMTO', checked: true },
+              { label: 'Sijil Kursus Keselamatan Penerbangan / Safety Officer', checked: true },
+              { label: 'Sijil Kelayakan Pesawat Beechcraft B200T (Pilot) & Pengalaman >=1 Thn', checked: true }
+            ]
+          }
+        ],
+        staffList: [
+          {
+            id: 'st-101',
+            name: '727xxx PW U I / Chief Instructor B200T',
+            scope: 'B1.1 Airframe & Engine',
+            coc: 'B200TSS/2026/01',
+            roles: { instructor: true, examiner: true, assessor: true },
+            startDate: '2025-03-01',
+            endDate: '2027-02-28',
+            docs: { formG: true, tor: true, coc: true, saml: true, inst: true, type: true },
+            maintHours: 30,
+            otherHours: 10
+          },
+          {
+            id: 'st-102',
+            name: '728xxx F/Sjn / Senior System Instructor',
+            scope: 'B1.1 / B2 Avionics',
+            coc: 'B200TSS/2026/02',
+            roles: { instructor: true, examiner: true, assessor: true },
+            startDate: '2025-05-01',
+            endDate: '2027-04-30',
+            docs: { formG: true, tor: true, coc: true, saml: true, inst: true, type: true },
+            maintHours: 24,
+            otherHours: 10
+          },
+          {
+            id: 'st-103',
+            name: '729xxx Sjn / System Instructor & Assessor',
+            scope: 'B1.1 Airframe & Engine',
+            coc: 'B200TSS/2026/03',
+            roles: { instructor: true, examiner: false, assessor: true },
+            startDate: '2026-01-15',
+            endDate: '2028-01-14',
+            docs: { formG: true, tor: true, coc: true, saml: true, inst: false, type: true },
+            maintHours: 18,
+            otherHours: 6
+          }
+        ],
+        cars: [
+          {
+            id: 'car-01',
+            code: 'CAR No: 01',
+            auditSource: 'IQA Cross-Audit No: 6/26 (06 Nov 2026)',
+            clause: 'MSTAR 147.A.110(a)',
+            level: 'Level 2',
+            category: 'Organisation',
+            auditDate: '2026-11-06',
+            dueDate: '2027-01-05',
+            status: 'Dalam Tindakan',
+            evidence: 'Fail Induk QM-03 & Memo PUSUB.16SKN.KEJ.112',
+            finding: 'Rekod kelayakan dan latihan (Instructor, Knowledge Examiner & Practical Assessor) masih disimpan di Sekolah Sistem dan belum dipusatkan sepenuhnya di bawah kawalan Quality Manager (QM).',
+            corrective: 'Memindahkan/menyediakan salinan induk fail kelayakan staf ke dalam Fail QM-03 di pejabat QM serta menyelaraskan daftar induk dan log 40 jam.',
+            preventive: 'Melaksanakan semakan suku tahun oleh QM ke atas semua fail staf QM-03 dan melengkapkan folder staf sebaik pelantikan/pertukaran.',
+            whys: [
+              'Fail rekod staf sebelum ini diuruskan secara operasi di Sekolah Sistem.',
+              'Tiada pembahagi fail berpusat QM-03 yang diseragamkan di pejabat QM.',
+              'Semakan berkala kawalan pusat rekod staf belum dijadualkan secara tetap.',
+              'Struktur kawalan dokumentasi antara pejabat QM dan Sekolah Sistem perlu diperkemaskan.',
+              'Kawalan pusat rekod staf di bawah Quality Department belum diselaraskan secara menyeluruh pada peringkat organisasi.'
+            ]
+          },
+          {
+            id: 'car-02',
+            code: 'CAR No: 02',
+            auditSource: 'IQA Cross-Audit No: 6/26 (06 Nov 2026)',
+            clause: 'MSTAR 147.A.130(d) & TIM Part 6 App II',
+            level: 'Level 2',
+            category: 'Procedure',
+            auditDate: '2026-11-06',
+            dueDate: '2027-01-05',
+            status: 'Dalam Tindakan',
+            evidence: 'TIM Part 6 Appendix II (Floor Plan) & Borang B200TSS-M/N',
+            finding: 'Pelan lantai (Floor Plan) kemudahan Sekolah Sistem dalam TIM Part 6 Appendix II tidak lengkap/tiada dan rujukan klausa berkaitan (TIM Part 2 Klausa 2.11(c)(3)) perlu diselaraskan.',
+            corrective: 'Menyediakan pelan lantai fasiliti Sekolah Sistem yang sah dan memasukkannya ke dalam TIM Part 6 Appendix II melalui proses pindaan B200TSS-M & B200TSS-N.',
+            preventive: 'Menyemak kesempurnaan lampiran, pelan lantai, dan rujukan silang klausa setiap kali berlaku pindaan manual atau semakan suku tahun.',
+            whys: [
+              'Lampiran pelan lantai kemudahan Sekolah Sistem tidak disertakan dalam salinan TIM yang disemak.',
+              'Proses semakan rujukan silang dan lampiran sebelum edaran manual belum mempunyai senarai semak khas.',
+              'Perubahan susun atur/rujukan manual tidak segera dikemas kini melalui borang pindaan.',
+              'Kawalan lampiran manual dan rujukan klausa dalam prosedur pindaan perlu diperketatkan.',
+              'Prosedur semakan lampiran dan rujukan silang dalam kawalan manual belum lengkap sepenuhnya.'
+            ]
+          }
+        ],
+        calendarEvents: [
+          {
+            id: 'ev-1',
+            title: 'IQA Cross-Audit No: 6/26 (Lead Auditor: PW U II Juhari, 8 Skn)',
+            date: '2026-11-06',
+            category: 'IQA',
+            clause: '147.A.130(b)',
+            status: 'Selesai',
+            notes: 'Rekod audit Cross-Audit No: 6/26 dengan 2 penemuan Level 2 (CAR No: 01 & CAR No: 02).'
+          },
+          {
+            id: 'ev-2',
+            title: 'Semakan Fail Induk QM-01 hingga QM-11 & Persediaan Penutup CAR',
+            date: '2026-11-27',
+            category: 'FOLDER',
+            clause: '147.A.110(a) & 147.A.130(d)',
+            status: 'Dalam Tindakan',
+            notes: 'Menyusun folder QM-01 hingga QM-11, melengkapkan cover page personel & partition separator.'
+          },
+          {
+            id: 'ev-3',
+            title: 'Mesyuarat Kajian Semula Pengurusan (MRM Tahunan AMTO)',
+            date: '2026-12-10',
+            category: 'MRM',
+            clause: '147.A.130(c)',
+            status: 'Dirancang',
+            notes: 'Dipengerusikan oleh Accountable Manager (Lt Kol Farrah Diba TUDM).'
+          },
+          {
+            id: 'ev-4',
+            title: 'Tarikh Akhir 60 Hari Penutupan CAR No: 01 & CAR No: 02 (Level 2)',
+            date: '2027-01-05',
+            category: 'CAR',
+            clause: '147.A.160',
+            status: 'Dalam Tindakan',
+            notes: 'Tempoh 60 hari kalendar dari tarikh audit 06 Nov 2026.'
+          },
+          {
+            id: 'ev-5',
+            title: 'Course Evaluation Audit & Semakan Kertas Soalan (B200TSS-E)',
+            date: '2027-01-20',
+            category: 'COURSE',
+            clause: '147.A.135 & TIM 5.1.5',
+            status: 'Dirancang',
+            notes: 'Semak lantikan Examiner bebas, 3 set soalan >=30% berbeza & markah lulus 75%.'
+          },
+          {
+            id: 'ev-6',
+            title: 'Semakan Kesahan Kurikulum Kursus B200T (Kitaran 2 Tahun)',
+            date: '2027-03-17',
+            category: 'VALIDITY',
+            clause: 'AMC 147.A.145(g)',
+            status: 'Dirancang',
+            notes: 'Pantau tempoh sah kurikulum bersama SAO / DGTA.'
+          }
+        ],
+        routines: [
+          { freq: 'Sebelum / Semasa / Selepas Kursus', action: 'Lantik Examiner oleh QM, sahkan soalan B200TSS-E, buat Course Evaluation Audit & verifikasi fail pelatih sebelum MSTAR Form 149.', evidence: 'Memo Examiner, B200TSS-E, Laporan Eval, Daftar Form 149' },
+          { freq: 'Setiap Suku Tahun (Quarterly)', action: 'Semak fail QM-03 & log Updating Training 40 jam/24 bulan semua staf serta kesempurnaan lampiran manual MTOE & TIM.', evidence: 'Log Semakan Suku Tahun & Kemas Kini Master File' },
+          { freq: 'Setiap 12 Bulan (12 Months)', action: 'Rancang & laksanakan Internal Quality Audit (IQA) meliputi 7 elemen OPPDMEF; keluarkan laporan dalam 7 hari bekerja.', evidence: 'Jadual IQA, Borang B200TSS-Q, Laporan IQA & CAR Log' },
+          { freq: 'Sekali Setahun (Yearly)', action: 'Urus setia & bentangkan prestasi kualiti AMTO dalam Management Review Meeting (MRM) dipengerusikan oleh AM.', evidence: 'Memo Panggilan, Slaid QM & Minit MRM Disahkan AM' },
+          { freq: 'Setiap 2 Tahun (Every 24 Months)', action: 'Pantau tempoh sah kurikulum kursus bersama SAO/DGTA dan semak pembaharuan kitaran kompetensi 24 bulan staf.', evidence: 'Surat Lanjutan Kurikulum & Log 40 Jam Staf' }
+        ],
+        links: [
+          {
+            category: 'QM Portal & Form',
+            title: 'Portal Rujukan & Kawalan Tugas QM AMTO No 16 Skn (Google Sites)',
+            url: 'https://sites.google.com',
+            note: 'Kemas kini pautan rasmi Google Sites QM anda di sini.'
+          },
+          {
+            category: 'QM Portal & Form',
+            title: 'Google Form Pengumpulan Maklumat & Gambar Staf AMTO',
+            url: 'https://docs.google.com/forms',
+            note: 'Pautan borang pengumpulan data peribadi, gambar pasport & sijil staf.'
+          },
+          {
+            category: 'SAML & DGTA',
+            title: 'Folder Gambar SAML No 16 Skuadron (Google Drive)',
+            url: 'https://drive.google.com',
+            note: 'Rujukan folder gambar SAML anggota No 16 Skuadron (MSTAR 66).'
+          },
+          {
+            category: 'SAML & DGTA',
+            title: 'Pangkalan Data Kad SAML (Siri 7-24 & Siri 3-24 AppSheet)',
+            url: 'https://docs.google.com/spreadsheets',
+            note: 'Rekod pemantauan kad SAML dan koordinasi kelayakan MSTAR 66.'
+          },
+          {
+            category: 'TUDM Portal',
+            title: 'E-Portal Rasmi Tentera Udara Diraja Malaysia (TUDM)',
+            url: 'https://portal.airforce.mil.my',
+            note: 'Rujukan pekeliling, direktif & portal dalaman TUDM.'
+          }
+        ]
+      };
+    }
+
+    function loadState() {
+      if (window.__EMBEDDED_QM_SNAPSHOT__ && typeof window.__EMBEDDED_QM_SNAPSHOT__ === 'object') {
+        return window.__EMBEDDED_QM_SNAPSHOT__;
+      }
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) return JSON.parse(saved);
+      } catch (err) {
+        console.warn('localStorage tidak dapat diakses:', err);
+      }
+      return getInitialState();
+    }
+
+    let state = loadState();
+    let calYear = 2026;
+    let calMonth = 10; // Nov 2026
+
+    function persistState(msg = 'Perubahan disimpan.') {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (err) {
+        console.warn('Gagal simpan ke localStorage:', err);
+      }
+      updateGlobalKPIs();
+      showToast(msg);
+    }
+
+    // =====================================================================
+    // DYNAMIC PWA MANIFEST, HIGH-RES ICON GENERATOR & ANDROID INSTALL PROMPT
+    // =====================================================================
+    let deferredInstallPrompt = null;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredInstallPrompt = e;
+      const btn = document.getElementById('btnTriggerInstall');
+      if (btn) {
+        btn.innerHTML = '<i data-lucide="download-cloud" class="w-3.5 h-3.5"></i><span>Install App Sekarang</span>';
+        lucide.createIcons();
+      }
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredInstallPrompt = null;
+      showToast('Aplikasi QM B200T berjaya dipasang pada peranti Android!');
+    });
+
+    async function triggerAndroidInstall() {
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        const { outcome } = await deferredInstallPrompt.userChoice;
+        if (outcome === 'accepted') {
+          showToast('Memasang aplikasi QM AMTO 16 Skn...');
+        }
+        deferredInstallPrompt = null;
+      } else {
+        openAndroidGuideModal();
+      }
+    }
+
+    function openAndroidGuideModal() {
+      openModal('androidGuideModal');
+    }
+
+    function generateCrestPngDataUrl(size, customImgSrc) {
+      return new Promise((resolve) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+
+        // Background Royal Navy
+        ctx.fillStyle = '#0b192c';
+        ctx.fillRect(0, 0, size, size);
+
+        // Outer Gold Border Ring
+        const pad = size * 0.06;
+        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = size * 0.035;
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, (size / 2) - pad, 0, Math.PI * 2);
+        ctx.stroke();
+
+        if (customImgSrc) {
+          const img = new Image();
+          img.onload = function() {
+            const inner = size * 0.78;
+            const offset = (size - inner) / 2;
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(size / 2, size / 2, inner / 2, 0, Math.PI * 2);
+            ctx.clip();
+            ctx.drawImage(img, offset, offset, inner, inner);
+            ctx.restore();
+            resolve(canvas.toDataURL('image/png'));
+          };
+          img.onerror = function() {
+            drawFallbackCanvasCrest(ctx, size);
+            resolve(canvas.toDataURL('image/png'));
+          };
+          img.src = customImgSrc;
+        } else {
+          drawFallbackCanvasCrest(ctx, size);
+          resolve(canvas.toDataURL('image/png'));
+        }
+      });
+    }
+
+    function drawFallbackCanvasCrest(ctx, size) {
+      const cx = size / 2;
+      const cy = size / 2;
+      // Inner Teal Accent Ring
+      ctx.strokeStyle = '#06b6d4';
+      ctx.lineWidth = size * 0.015;
+      ctx.beginPath();
+      ctx.arc(cx, cy, size * 0.36, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Text Badge
+      ctx.fillStyle = '#fde68a';
+      ctx.font = `900 ${Math.round(size * 0.14)}px Inter, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('QM 16 SKN', cx, cy - size * 0.03);
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = `800 ${Math.round(size * 0.095)}px Inter, sans-serif`;
+      ctx.fillText('B200T AMTO', cx, cy + size * 0.11);
+
+      // Ribbon
+      ctx.fillStyle = '#d4af37';
+      ctx.fillRect(size * 0.18, size * 0.72, size * 0.64, size * 0.12);
+      ctx.fillStyle = '#060f1e';
+      ctx.font = `900 ${Math.round(size * 0.062)}px Inter, sans-serif`;
+      ctx.fillText('JEJAK SAMUDRA', cx, size * 0.80);
+    }
+
+    async function setupDynamicPwaManifest() {
+      try {
+        const icon192 = await generateCrestPngDataUrl(192, state.customCrestDataUrl);
+        const icon512 = await generateCrestPngDataUrl(512, state.customCrestDataUrl);
+
+        const appleLink = document.getElementById('appleTouchIconLink');
+        if (appleLink) appleLink.href = icon192;
+
+        const manifestObj = {
+          name: 'QM AMTO 16 Skn — Beechcraft B200T',
+          short_name: 'QM B200T',
+          description: 'Portal Quality Manager (QM) AMTO No 16 Skuadron (Jejak Samudra), PU Subang.',
+          start_url: window.location.href,
+          scope: './',
+          display: 'standalone',
+          orientation: 'portrait',
+          background_color: '#0b192c',
+          theme_color: '#0b192c',
+          icons: [
+            { src: icon192, sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
+            { src: icon512, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+          ]
+        };
+
+        const manifestBlob = new Blob([JSON.stringify(manifestObj)], { type: 'application/manifest+json' });
+        const manifestUrl = URL.createObjectURL(manifestBlob);
+        const manifestLink = document.getElementById('pwaManifestLink');
+        if (manifestLink) manifestLink.href = manifestUrl;
+
+        // Lightweight inline Service Worker registration when served over HTTPS/localhost
+        if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+          const swCode = `
+            const CACHE_NAME = 'qm-amto-16skn-v1';
+            self.addEventListener('install', (e) => {
+              self.skipWaiting();
+            });
+            self.addEventListener('activate', (e) => {
+              e.waitUntil(self.clients.claim());
+            });
+            self.addEventListener('fetch', (e) => {
+              e.respondWith(
+                fetch(e.request).then((res) => {
+                  const clone = res.clone();
+                  caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone)).catch(() => {});
+                  return res;
+                }).catch(() => caches.match(e.request))
+              );
+            });
+          `;
+          const swBlob = new Blob([swCode], { type: 'application/javascript' });
+          const swUrl = URL.createObjectURL(swBlob);
+          navigator.serviceWorker.register(swUrl).catch(() => {});
+        }
+      } catch (err) {
+        console.warn('PWA manifest setup info:', err);
+      }
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      document.getElementById('toastText').textContent = msg;
+      el.classList.remove('hidden');
+      el.classList.add('flex');
+      clearTimeout(window.__toastTimeout);
+      window.__toastTimeout = setTimeout(() => {
+        el.classList.add('hidden');
+        el.classList.remove('flex');
+      }, 2200);
+    }
+
+    // Crest Custom Upload
+    function handleCrestUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        state.customCrestDataUrl = e.target.result;
+        applyCrestDisplay();
+        setupDynamicPwaManifest();
+        persistState('Lambang unit & ikon Android berjaya dikemas kini.');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function applyCrestDisplay() {
+      const img = document.getElementById('customCrestImg');
+      const svg = document.getElementById('defaultCrestSvg');
+      if (state.customCrestDataUrl) {
+        img.src = state.customCrestDataUrl;
+        img.classList.remove('hidden');
+        svg.classList.add('hidden');
+      } else {
+        img.classList.add('hidden');
+        svg.classList.remove('hidden');
+      }
+    }
+
+    // Navigation Tabs
+    function switchTab(tabName) {
+      document.querySelectorAll('.app-section').forEach(sec => sec.classList.add('hidden'));
+      const targetSec = document.getElementById(`section-${tabName}`);
+      if (targetSec) targetSec.classList.remove('hidden');
+
+      document.querySelectorAll('.nav-tab').forEach(btn => {
+        btn.classList.remove('bg-navy-900', 'text-white', 'shadow', 'font-bold');
+        btn.classList.add('text-slate-700', 'hover:bg-slate-100', 'font-semibold');
+      });
+      const activeBtn = document.getElementById(`nav-${tabName}`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-navy-900', 'text-white', 'shadow', 'font-bold');
+        activeBtn.classList.remove('text-slate-700', 'hover:bg-slate-100', 'font-semibold');
+      }
+
+      document.querySelectorAll('.mnav-tab').forEach(btn => {
+        btn.classList.remove('bg-amber-400', 'text-slate-950', 'font-black');
+        btn.classList.add('hover:bg-white/10');
+      });
+      const activeMobileBtn = document.getElementById(`mnav-${tabName}`);
+      if (activeMobileBtn) {
+        activeMobileBtn.classList.add('bg-amber-400', 'text-slate-950', 'font-black');
+        activeMobileBtn.classList.remove('hover:bg-white/10');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    // KPIs
+    function updateGlobalKPIs() {
+      let totalF = 0, doneF = 0;
+      state.folders.forEach(f => f.items.forEach(i => { totalF++; if (i.checked) doneF++; }));
+      const fPct = totalF ? Math.round((doneF / totalF) * 100) : 0;
+      document.getElementById('kpiFolderPct').textContent = `${fPct}%`;
+      document.getElementById('kpiFolderSub').textContent = `${doneF}/${totalF} item`;
+
+      const totalS = state.staffList.length;
+      const readyS = state.staffList.filter(s => {
+        const allD = Object.values(s.docs).every(Boolean);
+        const m = Number(s.maintHours) || 0;
+        const o = Number(s.otherHours) || 0;
+        return allD && m >= 30 && o >= 10 && (m + o) >= 40;
+      }).length;
+      document.getElementById('kpiStaffReady').textContent = `${readyS}/${totalS}`;
+
+      const totalC = state.cars.length;
+      const openC = state.cars.filter(c => c.status !== 'Closed').length;
+      document.getElementById('kpiCarOpen').textContent = `${openC}`;
+      document.getElementById('kpiCarTotal').textContent = `Aktif / ${totalC} Jumlah`;
+
+      const totalCal = state.calendarEvents.length;
+      const doneCal = state.calendarEvents.filter(e => e.status === 'Selesai').length;
+      document.getElementById('kpiCalDone').textContent = `${doneCal}/${totalCal}`;
+    }
+
+    // =====================================================================
+    // SECTION 2: MASTER FOLDERS (QM-01 TO QM-11)
+    // =====================================================================
+    function renderMasterFolders() {
+      const q = (document.getElementById('folderSearchInput').value || '').toLowerCase().trim();
+      const container = document.getElementById('foldersListContainer');
+      container.innerHTML = '';
+
+      state.folders.forEach((folder, fIdx) => {
+        const total = folder.items.length;
+        const done = folder.items.filter(i => i.checked).length;
+        const pct = total ? Math.round((done / total) * 100) : 0;
+
+        const matchingItems = folder.items
+          .map((item, iIdx) => ({ item, iIdx }))
+          .filter(({ item }) => !q || item.text.toLowerCase().includes(q) || folder.code.toLowerCase().includes(q) || folder.title.toLowerCase().includes(q));
+
+        if (q && matchingItems.length === 0) return;
+
+        const isOpen = q ? true : folder.expanded;
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden print-break';
+        card.innerHTML = `
+          <div class="p-4 sm:p-5 bg-slate-50/80 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 cursor-pointer" onclick="toggleFolder(${fIdx})">
+            <div class="flex items-start gap-3">
+              <div class="px-3 py-2 rounded-xl bg-navy-900 text-amber-300 font-black text-xs sm:text-sm shrink-0">${folder.code}</div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h3 class="font-extrabold text-navy-900 text-sm sm:text-base">${folder.title}</h3>
+                  <span class="px-2 py-0.5 text-[10px] font-bold bg-sky-100 text-sky-800 rounded">${folder.clause}</span>
+                </div>
+                <p class="text-xs text-slate-600 mt-0.5">${folder.desc}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 self-end sm:self-center shrink-0">
+              <span class="px-2.5 py-1 rounded-full text-xs font-extrabold ${pct === 100 ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${done}/${total} (${pct}%)</span>
+              <i data-lucide="${isOpen ? 'chevron-up' : 'chevron-down'}" class="w-5 h-5 text-slate-400"></i>
+            </div>
+          </div>
+
+          <div class="${isOpen ? 'block' : 'hidden'} p-4 sm:p-5 space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-100">
+              <div class="w-full sm:w-64 bg-slate-200 h-2 rounded-full overflow-hidden">
+                <div class="bg-teal-600 h-full transition-all" style="width:${pct}%"></div>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <span class="font-bold text-slate-500">Lokasi:</span>
+                <input type="text" value="${folder.location || ''}" onchange="updateFolderLoc(${fIdx}, this.value)" class="px-2.5 py-1 rounded-lg border border-slate-300 text-slate-800 font-medium" />
+              </div>
+            </div>
+
+            <div class="divide-y divide-slate-100">
+              ${matchingItems.map(({ item, iIdx }) => `
+                <div class="py-2 flex items-center justify-between gap-3 group">
+                  <label class="flex items-start gap-2.5 cursor-pointer flex-1 text-xs sm:text-sm">
+                    <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleFolderItem(${fIdx}, ${iIdx})" class="mt-1 w-4 h-4 rounded border-slate-300 text-navy-900" />
+                    <span class="${item.checked ? 'line-through text-slate-400' : 'text-slate-800 font-medium'}">${item.text}</span>
+                  </label>
+                  <button onclick="removeFolderItem(${fIdx}, ${iIdx})" class="no-print opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-600 p-1 transition" title="Padam">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="pt-2 flex items-center gap-2 no-print">
+              <input type="text" id="add-folder-input-${fIdx}" placeholder="Tambah dokumen baharu ke ${folder.code}..." class="flex-1 px-3 py-2 rounded-xl border border-slate-300 text-xs" onkeydown="if(event.key==='Enter'){event.preventDefault();addFolderItem(${fIdx});}" />
+              <button onclick="addFolderItem(${fIdx})" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-navy-900 hover:bg-navy-800 text-white transition">+ Tambah</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    function toggleFolder(fIdx) {
+      state.folders[fIdx].expanded = !state.folders[fIdx].expanded;
+      persistState('Paparan folder dikemas kini.');
+      renderMasterFolders();
+    }
+
+    function setAllFoldersExpanded(val) {
+      state.folders.forEach(f => f.expanded = val);
+      persistState(val ? 'Semua folder dibuka.' : 'Semua folder ditutup.');
+      renderMasterFolders();
+    }
+
+    function toggleFolderItem(fIdx, iIdx) {
+      state.folders[fIdx].items[iIdx].checked = !state.folders[fIdx].items[iIdx].checked;
+      persistState('Status dokumen fail dikemas kini.');
+      renderMasterFolders();
+    }
+
+    function updateFolderLoc(fIdx, val) {
+      state.folders[fIdx].location = val;
+      persistState('Lokasi fail dikemas kini.');
+    }
+
+    function addFolderItem(fIdx) {
+      const inp = document.getElementById(`add-folder-input-${fIdx}`);
+      const val = inp.value.trim();
+      if (!val) return;
+      state.folders[fIdx].items.push({ text: val, checked: false });
+      inp.value = '';
+      persistState('Dokumen baharu ditambah ke fail.');
+      renderMasterFolders();
+    }
+
+    function removeFolderItem(fIdx, iIdx) {
+      state.folders[fIdx].items.splice(iIdx, 1);
+      persistState('Item dipadam.');
+      renderMasterFolders();
+    }
+
+    // =====================================================================
+    // SECTION 3: PERSONNEL & 40-HR UPDATING TRAINING
+    // =====================================================================
+    function renderMgmtCards() {
+      const wrap = document.getElementById('mgmtCardsContainer');
+      wrap.innerHTML = '';
+      state.mgmtPersonnel.forEach((person, pIdx) => {
+        const done = person.docs.filter(d => d.checked).length;
+        const total = person.docs.length;
+        const div = document.createElement('div');
+        div.className = 'rounded-2xl border border-slate-200 bg-slate-50/60 p-4 space-y-2.5';
+        div.innerHTML = `
+          <div class="flex items-start justify-between gap-2 border-b border-slate-200 pb-2">
+            <div>
+              <span class="text-[11px] font-extrabold uppercase text-teal-800">${person.role}</span>
+              <h4 class="font-extrabold text-slate-900 text-sm">${person.name}</h4>
+              <p class="text-[11px] text-slate-500">${person.ref}</p>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold ${done === total ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${done}/${total}</span>
+          </div>
+          <div class="space-y-1.5">
+            ${person.docs.map((doc, dIdx) => `
+              <label class="flex items-start gap-2 cursor-pointer text-xs">
+                <input type="checkbox" ${doc.checked ? 'checked' : ''} onchange="toggleMgmtDoc(${pIdx}, ${dIdx})" class="mt-0.5 w-4 h-4 rounded border-slate-300 text-teal-700" />
+                <span class="${doc.checked ? 'line-through text-slate-400' : 'text-slate-700 font-medium'}">${doc.label}</span>
+              </label>
+            `).join('')}
+          </div>
+        `;
+        wrap.appendChild(div);
+      });
+    }
+
+    function toggleMgmtDoc(pIdx, dIdx) {
+      state.mgmtPersonnel[pIdx].docs[dIdx].checked = !state.mgmtPersonnel[pIdx].docs[dIdx].checked;
+      persistState('Dokumen personel dikemas kini.');
+      renderMgmtCards();
+    }
+
+    function renderStaffTable() {
+      const tbody = document.getElementById('staffTableBody');
+      tbody.innerHTML = '';
+
+      const docDefs = [
+        { key: 'formG', label: 'B200TSS-G' },
+        { key: 'tor', label: 'TOR' },
+        { key: 'coc', label: 'CoC' },
+        { key: 'saml', label: 'SAML' },
+        { key: 'inst', label: 'Inst' },
+        { key: 'type', label: 'B200T' }
+      ];
+
+      state.staffList.forEach((st, idx) => {
+        const m = Number(st.maintHours) || 0;
+        const o = Number(st.otherHours) || 0;
+        const sum = m + o;
+        const allDocs = Object.values(st.docs).every(Boolean);
+        const ok = allDocs && m >= 30 && o >= 10 && sum >= 40;
+
+        const roleBadges = [
+          st.roles.instructor ? '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800">Instructor</span>' : '',
+          st.roles.examiner ? '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-indigo-100 text-indigo-800">Examiner</span>' : '',
+          st.roles.assessor ? '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-teal-100 text-teal-800">Assessor</span>' : ''
+        ].filter(Boolean).join(' ');
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition';
+        tr.innerHTML = `
+          <td class="py-3 px-3">
+            <div class="font-extrabold text-slate-900">${st.name}</div>
+            <div class="flex flex-wrap gap-1 mt-1">${roleBadges}</div>
+            <div class="text-[11px] text-slate-500 mt-1">${st.scope || '-'} &bull; CoC: <span class="font-semibold">${st.coc || '-'}</span></div>
+          </td>
+          <td class="py-3 px-2 text-center whitespace-nowrap">
+            <div class="font-semibold text-slate-700">${st.startDate || '-'}</div>
+            <div class="text-[11px] text-slate-500">hingga ${st.endDate || '-'}</div>
+          </td>
+          <td class="py-3 px-2 text-center">
+            <div class="flex flex-wrap justify-center gap-1">
+              ${docDefs.map(d => `
+                <button onclick="toggleStaffDoc(${idx}, '${d.key}')" class="px-1.5 py-1 rounded text-[10px] font-bold border transition ${st.docs[d.key] ? 'bg-teal-600 text-white border-teal-700' : 'bg-slate-100 text-slate-500 border-slate-300'}">
+                  ${st.docs[d.key] ? '✓ ' : ''}${d.label}
+                </button>
+              `).join('')}
+            </div>
+          </td>
+          <td class="py-3 px-2 text-center">
+            <input type="number" step="0.5" min="0" value="${m}" onchange="updateStaffHrs(${idx}, 'maintHours', this.value)" class="w-16 text-center px-1.5 py-1 rounded-lg border border-slate-300 font-bold ${m >= 30 ? 'text-emerald-700 bg-emerald-50/50' : 'text-amber-700 bg-amber-50/50'}" />
+          </td>
+          <td class="py-3 px-2 text-center">
+            <input type="number" step="0.5" min="0" value="${o}" onchange="updateStaffHrs(${idx}, 'otherHours', this.value)" class="w-16 text-center px-1.5 py-1 rounded-lg border border-slate-300 font-bold ${o >= 10 ? 'text-emerald-700 bg-emerald-50/50' : 'text-amber-700 bg-amber-50/50'}" />
+          </td>
+          <td class="py-3 px-2 text-center">
+            <span class="text-sm font-black ${sum >= 40 ? 'text-emerald-700' : 'text-amber-600'}">${sum}j</span>
+            <span class="block text-[10px] text-slate-400">/40j</span>
+          </td>
+          <td class="py-3 px-2 text-center whitespace-nowrap">
+            <span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold ${ok ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
+              ${ok ? 'Patuh' : 'Semak'}
+            </span>
+          </td>
+          <td class="py-3 px-2 text-right whitespace-nowrap no-print">
+            <button onclick="openStaffModal(${idx})" class="p-1.5 text-slate-500 hover:text-sky-700" title="Edit"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+            <button onclick="deleteStaff(${idx})" class="p-1.5 text-slate-500 hover:text-rose-600" title="Padam"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      lucide.createIcons();
+    }
+
+    function toggleStaffDoc(idx, key) {
+      state.staffList[idx].docs[key] = !state.staffList[idx].docs[key];
+      persistState('Dokumen staf dikemas kini.');
+      renderStaffTable();
+    }
+
+    function updateStaffHrs(idx, field, val) {
+      state.staffList[idx][field] = parseFloat(val) || 0;
+      persistState('Jam latihan staf dikemas kini.');
+      renderStaffTable();
+    }
+
+    function openStaffModal(editIdx = null) {
+      document.getElementById('staffEditIndex').value = editIdx !== null ? editIdx : '';
+      if (editIdx !== null) {
+        const st = state.staffList[editIdx];
+        document.getElementById('staffNameInput').value = st.name;
+        document.getElementById('staffScopeInput').value = st.scope || '';
+        document.getElementById('staffCocInput').value = st.coc || '';
+        document.getElementById('roleInstInput').checked = !!st.roles.instructor;
+        document.getElementById('roleExamInput').checked = !!st.roles.examiner;
+        document.getElementById('roleAssrInput').checked = !!st.roles.assessor;
+        document.getElementById('staffStartInput').value = st.startDate || '';
+        document.getElementById('staffEndInput').value = st.endDate || '';
+        document.getElementById('staffMaintInput').value = st.maintHours || 0;
+        document.getElementById('staffOtherInput').value = st.otherHours || 0;
+      } else {
+        document.getElementById('staffForm').reset();
+        document.getElementById('roleInstInput').checked = true;
+        document.getElementById('staffStartInput').value = '2026-11-01';
+        document.getElementById('staffEndInput').value = '2028-10-31';
+      }
+      openModal('staffModal');
+    }
+
+    function saveStaffForm(e) {
+      e.preventDefault();
+      const editVal = document.getElementById('staffEditIndex').value;
+      const idx = editVal !== '' ? parseInt(editVal, 10) : -1;
+      const existing = idx > -1 ? state.staffList[idx] : null;
+
+      const record = {
+        id: existing ? existing.id : 'st-' + Date.now(),
+        name: document.getElementById('staffNameInput').value.trim(),
+        scope: document.getElementById('staffScopeInput').value.trim(),
+        coc: document.getElementById('staffCocInput').value.trim(),
+        roles: {
+          instructor: document.getElementById('roleInstInput').checked,
+          examiner: document.getElementById('roleExamInput').checked,
+          assessor: document.getElementById('roleAssrInput').checked
+        },
+        startDate: document.getElementById('staffStartInput').value,
+        endDate: document.getElementById('staffEndInput').value,
+        docs: existing ? existing.docs : { formG: true, tor: true, coc: true, saml: true, inst: true, type: true },
+        maintHours: parseFloat(document.getElementById('staffMaintInput').value) || 0,
+        otherHours: parseFloat(document.getElementById('staffOtherInput').value) || 0
+      };
+
+      if (idx > -1) state.staffList[idx] = record;
+      else state.staffList.push(record);
+
+      persistState('Rekod staf disimpan.');
+      renderStaffTable();
+      closeModal('staffModal');
+    }
+
+    function deleteStaff(idx) {
+      state.staffList.splice(idx, 1);
+      persistState('Rekod staf dipadam.');
+      renderStaffTable();
+    }
+
+    // =====================================================================
+    // SECTION 4: MASTER CAR LOG & 5-WHYS RCA
+    // =====================================================================
+    function computeDaysRemaining(dueDateStr, status) {
+      if (status === 'Closed') return { text: 'Selesai', cls: 'bg-emerald-100 text-emerald-800' };
+      if (!dueDateStr) return { text: '-', cls: 'bg-slate-100 text-slate-600' };
+      const today = new Date('2026-11-27T00:00:00');
+      const due = new Date(dueDateStr + 'T00:00:00');
+      const diffDays = Math.ceil((due - today) / (1000 * 60 * 60 * 24));
+      if (diffDays < 0) return { text: `Lewat ${Math.abs(diffDays)}h`, cls: 'bg-rose-100 text-rose-800' };
+      if (diffDays <= 14) return { text: `${diffDays} hari lagi`, cls: 'bg-amber-100 text-amber-800' };
+      return { text: `${diffDays} hari lagi`, cls: 'bg-sky-100 text-sky-800' };
+    }
+
+    function renderCarSection() {
+      const catFilter = document.getElementById('carCategoryFilter').value;
+      const statusFilter = document.getElementById('carStatusFilter').value;
+
+      document.getElementById('rcaCountPeople').textContent = state.cars.filter(c => c.category === 'People').length;
+      document.getElementById('rcaCountOrg').textContent = state.cars.filter(c => c.category === 'Organisation').length;
+      document.getElementById('rcaCountProc').textContent = state.cars.filter(c => c.category === 'Procedure').length;
+
+      const list = state.cars.filter(c => {
+        const okCat = catFilter === 'ALL' || c.category === catFilter;
+        const okSt = statusFilter === 'ALL' || c.status === statusFilter;
+        return okCat && okSt;
+      });
+
+      const container = document.getElementById('carCardsContainer');
+      container.innerHTML = '';
+
+      if (list.length === 0) {
+        container.innerHTML = `<div class="bg-white rounded-2xl p-8 text-center text-xs text-slate-500 border border-slate-200">Tiada rekod CAR sepadan dengan penapis. Klik "+ Tambah CAR" untuk merekodkan penemuan baharu.</div>`;
+        return;
+      }
+
+      list.forEach((car, idx) => {
+        const remaining = computeDaysRemaining(car.dueDate, car.status);
+        let catBadge = 'bg-sky-100 text-sky-800 border-sky-200';
+        if (car.category === 'Organisation') catBadge = 'bg-teal-100 text-teal-800 border-teal-200';
+        if (car.category === 'Procedure') catBadge = 'bg-amber-100 text-amber-800 border-amber-200';
+
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4 print-break';
+        card.innerHTML = `
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-navy-900 text-amber-300 font-black text-xs">Bil ${idx + 1} &bull; ${car.code}</span>
+              <span class="px-2.5 py-1 rounded-full text-xs font-extrabold border ${catBadge}">RCA: ${car.category}</span>
+              <span class="px-2.5 py-1 rounded-full text-xs font-bold ${car.level === 'Level 1' ? 'bg-rose-100 text-rose-800' : 'bg-indigo-100 text-indigo-800'}">${car.level}</span>
+              <span class="text-xs font-bold text-slate-600">${car.clause}</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-1 rounded-full text-xs font-extrabold ${remaining.cls}">${remaining.text}</span>
+              <button onclick="cycleCarStatus('${car.id}')" class="px-3 py-1 rounded-full text-xs font-extrabold bg-slate-900 text-white hover:bg-slate-700 transition" title="Klik untuk tukar status">
+                Status: ${car.status}
+              </button>
+              <button onclick="openCarModal('${car.id}')" class="no-print p-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-700" title="Edit CAR & 5-Whys">
+                <i data-lucide="pencil" class="w-4 h-4"></i>
+              </button>
+              <button onclick="deleteCar('${car.id}')" class="no-print p-1.5 rounded-lg border border-slate-200 hover:bg-rose-50 text-rose-600" title="Padam CAR">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="text-xs text-slate-500 flex flex-wrap gap-x-6 gap-y-1">
+            <span><strong>Sumber:</strong> ${car.auditSource}</span>
+            <span><strong>Tarikh Audit:</strong> ${car.auditDate || '-'}</span>
+            <span><strong>Tarikh Akhir:</strong> ${car.dueDate || '-'}</span>
+            <span><strong>Bukti / Rujukan:</strong> ${car.evidence || '-'}</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="font-extrabold text-navy-900 mb-1">Penemuan Audit</div>
+              <p class="text-slate-700 leading-relaxed">${car.finding}</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-sky-50/60 border border-sky-200/80">
+              <div class="font-extrabold text-sky-900 mb-1">Corrective Action (Pembetulan)</div>
+              <p class="text-slate-700 leading-relaxed">${car.corrective}</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-teal-50/60 border border-teal-200/80">
+              <div class="font-extrabold text-teal-900 mb-1">Preventive Action (Pencegahan)</div>
+              <p class="text-slate-700 leading-relaxed">${car.preventive}</p>
+            </div>
+          </div>
+
+          <!-- 5-Whys Accordion / Panel -->
+          <div class="bg-amber-50/40 border border-amber-200/80 rounded-xl p-3.5 text-xs space-y-1.5">
+            <div class="font-extrabold text-amber-900 uppercase tracking-wider text-[11px]">Analisis 5-Whys (Root Cause Analysis — ${car.category})</div>
+            <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 pt-1">
+              ${(car.whys || ['', '', '', '', '']).map((w, wIdx) => `
+                <div class="bg-white p-2.5 rounded-lg border ${wIdx === 4 ? 'border-amber-400 ring-1 ring-amber-300' : 'border-slate-200'}">
+                  <div class="text-[10px] font-black uppercase ${wIdx === 4 ? 'text-amber-700' : 'text-slate-500'}">
+                    ${wIdx === 4 ? 'Why 5 (Root Cause)' : `Why ${wIdx + 1}`}
+                  </div>
+                  <p class="text-slate-700 mt-1 leading-snug ${wIdx === 4 ? 'font-bold text-slate-900' : ''}">${w || '-'}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    function openCarModal(carId = null) {
+      document.getElementById('carIdInput').value = carId || '';
+      if (carId) {
+        const c = state.cars.find(x => x.id === carId);
+        if (!c) return;
+        document.getElementById('carCodeInput').value = c.code;
+        document.getElementById('carAuditSourceInput').value = c.auditSource;
+        document.getElementById('carClauseInput').value = c.clause;
+        document.getElementById('carLevelInput').value = c.level;
+        document.getElementById('carCategoryInput').value = c.category;
+        document.getElementById('carAuditDateInput').value = c.auditDate || '';
+        document.getElementById('carDueDateInput').value = c.dueDate || '';
+        document.getElementById('carStatusInput').value = c.status;
+        document.getElementById('carEvidenceInput').value = c.evidence || '';
+        document.getElementById('carFindingInput').value = c.finding;
+        document.getElementById('carCorrectiveInput').value = c.corrective;
+        document.getElementById('carPreventiveInput').value = c.preventive;
+        const w = c.whys || ['', '', '', '', ''];
+        document.getElementById('why1Input').value = w[0] || '';
+        document.getElementById('why2Input').value = w[1] || '';
+        document.getElementById('why3Input').value = w[2] || '';
+        document.getElementById('why4Input').value = w[3] || '';
+        document.getElementById('why5Input').value = w[4] || '';
+      } else {
+        document.getElementById('carForm').reset();
+        const nextNum = String(state.cars.length + 1).padStart(2, '0');
+        document.getElementById('carCodeInput').value = `CAR No: ${nextNum}`;
+        document.getElementById('carAuditDateInput').value = '2026-11-27';
+        document.getElementById('carDueDateInput').value = '2027-01-26';
+      }
+      openModal('carModal');
+    }
+
+    function saveCarForm(e) {
+      e.preventDefault();
+      const id = document.getElementById('carIdInput').value;
+      const whys = [
+        document.getElementById('why1Input').value.trim(),
+        document.getElementById('why2Input').value.trim(),
+        document.getElementById('why3Input').value.trim(),
+        document.getElementById('why4Input').value.trim(),
+        document.getElementById('why5Input').value.trim()
+      ];
+
+      const item = {
+        id: id || 'car-' + Date.now(),
+        code: document.getElementById('carCodeInput').value.trim(),
+        auditSource: document.getElementById('carAuditSourceInput').value.trim(),
+        clause: document.getElementById('carClauseInput').value.trim(),
+        level: document.getElementById('carLevelInput').value,
+        category: document.getElementById('carCategoryInput').value,
+        auditDate: document.getElementById('carAuditDateInput').value,
+        dueDate: document.getElementById('carDueDateInput').value,
+        status: document.getElementById('carStatusInput').value,
+        evidence: document.getElementById('carEvidenceInput').value.trim(),
+        finding: document.getElementById('carFindingInput').value.trim(),
+        corrective: document.getElementById('carCorrectiveInput').value.trim(),
+        preventive: document.getElementById('carPreventiveInput').value.trim(),
+        whys
+      };
+
+      if (id) {
+        const idx = state.cars.findIndex(x => x.id === id);
+        if (idx > -1) state.cars[idx] = item;
+      } else {
+        state.cars.push(item);
+      }
+
+      persistState('Rekod CAR & 5-Whys disimpan.');
+      renderCarSection();
+      closeModal('carModal');
+    }
+
+    function cycleCarStatus(id) {
+      const order = ['Open', 'Dalam Tindakan', 'Menunggu Verifikasi', 'Closed'];
+      const c = state.cars.find(x => x.id === id);
+      if (!c) return;
+      c.status = order[(order.indexOf(c.status) + 1) % order.length];
+      persistState(`Status ${c.code} -> ${c.status}`);
+      renderCarSection();
+    }
+
+    function deleteCar(id) {
+      state.cars = state.cars.filter(x => x.id !== id);
+      persistState('Rekod CAR dipadam.');
+      renderCarSection();
+    }
+
+    // =====================================================================
+    // SECTION 5: EDITABLE CALENDAR & ROUTINE TABLE
+    // =====================================================================
+    const MONTHS_MS = ['Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'];
+    const CAL_CAT_META = {
+      IQA: { badge: 'bg-blue-100 text-blue-800 border-blue-200', label: 'IQA (12 Bln)' },
+      MRM: { badge: 'bg-amber-100 text-amber-800 border-amber-200', label: 'MRM (Tahunan)' },
+      CAR: { badge: 'bg-rose-100 text-rose-800 border-rose-200', label: 'CAR / Due Date' },
+      COURSE: { badge: 'bg-emerald-100 text-emerald-800 border-emerald-200', label: 'Course / Exam' },
+      FOLDER: { badge: 'bg-purple-100 text-purple-800 border-purple-200', label: 'Fail / Manual' },
+      VALIDITY: { badge: 'bg-teal-100 text-teal-800 border-teal-200', label: 'Kesahan / 40j' }
+    };
+
+    function renderCalendarModule() {
+      document.getElementById('calMonthHeading').textContent = `${MONTHS_MS[calMonth]} ${calYear}`;
+      const catFilter = document.getElementById('calCatFilter').value;
+      const grid = document.getElementById('calDaysGrid');
+      grid.innerHTML = '';
+
+      const firstDay = new Date(calYear, calMonth, 1);
+      const totalDays = new Date(calYear, calMonth + 1, 0).getDate();
+      const offset = (firstDay.getDay() + 6) % 7;
+
+      for (let i = 0; i < offset; i++) {
+        const blank = document.createElement('div');
+        blank.className = 'min-h-[76px] rounded-xl bg-slate-50 border border-slate-100';
+        grid.appendChild(blank);
+      }
+
+      for (let d = 1; d <= totalDays; d++) {
+        const dateStr = `${calYear}-${String(calMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const evs = state.calendarEvents.filter(e => e.date === dateStr && (catFilter === 'ALL' || e.category === catFilter));
+        const isCurrentHighlight = dateStr === '2026-11-27';
+
+        const cell = document.createElement('div');
+        cell.className = `min-h-[78px] p-1.5 rounded-xl border transition cursor-pointer flex flex-col justify-between ${
+          isCurrentHighlight ? 'border-amber-500 bg-amber-50/50 ring-1 ring-amber-400' : 'border-slate-200 bg-white hover:border-sky-400'
+        }`;
+        cell.onclick = () => openEventModal(null, dateStr);
+        cell.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold ${isCurrentHighlight ? 'bg-amber-500 text-slate-950 px-1.5 py-0.5 rounded' : 'text-slate-800'}">${d}</span>
+            ${evs.length ? `<span class="text-[10px] font-bold text-slate-400">${evs.length}</span>` : ''}
+          </div>
+          <div class="space-y-1 mt-1">
+            ${evs.slice(0, 2).map(ev => {
+              const meta = CAL_CAT_META[ev.category] || CAL_CAT_META.FOLDER;
+              return `<div onclick="event.stopPropagation(); openEventModal('${ev.id}')" class="px-1.5 py-0.5 rounded text-[10px] font-bold truncate border ${meta.badge} ${ev.status === 'Selesai' ? 'line-through opacity-60' : ''}">${ev.title}</div>`;
+            }).join('')}
+            ${evs.length > 2 ? `<div class="text-[10px] text-center font-bold text-slate-500">+${evs.length - 2} lagi</div>` : ''}
+          </div>
+        `;
+        grid.appendChild(cell);
+      }
+
+      const listEl = document.getElementById('calEventsList');
+      listEl.innerHTML = '';
+      const filtered = state.calendarEvents
+        .filter(e => catFilter === 'ALL' || e.category === catFilter)
+        .sort((a, b) => a.date.localeCompare(b.date));
+
+      document.getElementById('calFilteredCount').textContent = `${filtered.length} Aktiviti`;
+
+      filtered.forEach(ev => {
+        const meta = CAL_CAT_META[ev.category] || CAL_CAT_META.FOLDER;
+        let stCls = 'bg-slate-100 text-slate-700';
+        if (ev.status === 'Selesai') stCls = 'bg-emerald-100 text-emerald-800';
+        else if (ev.status === 'Dalam Tindakan') stCls = 'bg-amber-100 text-amber-800';
+
+        const row = document.createElement('div');
+        row.className = 'py-3 flex items-start justify-between gap-3';
+        row.innerHTML = `
+          <div class="space-y-1 flex-1">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold border ${meta.badge}">${meta.label}</span>
+              <span class="text-xs font-extrabold text-slate-800">${ev.date}</span>
+              ${ev.clause ? `<span class="text-[11px] text-slate-500">&bull; ${ev.clause}</span>` : ''}
+            </div>
+            <div class="text-xs sm:text-sm font-bold ${ev.status === 'Selesai' ? 'line-through text-slate-400' : 'text-slate-900'}">${ev.title}</div>
+            ${ev.notes ? `<p class="text-xs text-slate-500">${ev.notes}</p>` : ''}
+          </div>
+          <div class="flex flex-col items-end gap-1.5 shrink-0">
+            <button onclick="cycleEventStatus('${ev.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-extrabold ${stCls}">${ev.status}</button>
+            <div class="flex items-center gap-1 no-print">
+              <button onclick="openEventModal('${ev.id}')" class="p-1 text-slate-400 hover:text-sky-700" title="Edit"><i data-lucide="pencil" class="w-3.5 h-3.5"></i></button>
+              <button onclick="deleteEvent('${ev.id}')" class="p-1 text-slate-400 hover:text-rose-600" title="Padam"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+            </div>
+          </div>
+        `;
+        listEl.appendChild(row);
+      });
+      lucide.createIcons();
+    }
+
+    function shiftCalendarMonth(delta) {
+      calMonth += delta;
+      if (calMonth > 11) { calMonth = 0; calYear++; }
+      else if (calMonth < 0) { calMonth = 11; calYear--; }
+      renderCalendarModule();
+    }
+
+    function jumpToCurrentCalMonth() {
+      calYear = 2026;
+      calMonth = 10;
+      renderCalendarModule();
+    }
+
+    function openEventModal(evId = null, defaultDate = null) {
+      document.getElementById('eventIdInput').value = evId || '';
+      if (evId) {
+        const ev = state.calendarEvents.find(x => x.id === evId);
+        if (!ev) return;
+        document.getElementById('eventTitleInput').value = ev.title;
+        document.getElementById('eventDateInput').value = ev.date;
+        document.getElementById('eventCategoryInput').value = ev.category;
+        document.getElementById('eventClauseInput').value = ev.clause || '';
+        document.getElementById('eventStatusInput').value = ev.status || 'Dirancang';
+        document.getElementById('eventNotesInput').value = ev.notes || '';
+      } else {
+        document.getElementById('eventForm').reset();
+        document.getElementById('eventDateInput').value = defaultDate || `${calYear}-${String(calMonth + 1).padStart(2, '0')}-15`;
+      }
+      openModal('eventModal');
+    }
+
+    function saveEventForm(e) {
+      e.preventDefault();
+      const id = document.getElementById('eventIdInput').value;
+      const evObj = {
+        id: id || 'ev-' + Date.now(),
+        title: document.getElementById('eventTitleInput').value.trim(),
+        date: document.getElementById('eventDateInput').value,
+        category: document.getElementById('eventCategoryInput').value,
+        clause: document.getElementById('eventClauseInput').value.trim(),
+        status: document.getElementById('eventStatusInput').value,
+        notes: document.getElementById('eventNotesInput').value.trim()
+      };
+
+      if (id) {
+        const idx = state.calendarEvents.findIndex(x => x.id === id);
+        if (idx > -1) state.calendarEvents[idx] = evObj;
+      } else {
+        state.calendarEvents.push(evObj);
+      }
+
+      if (evObj.date) {
+        const parts = evObj.date.split('-');
+        calYear = parseInt(parts[0], 10);
+        calMonth = parseInt(parts[1], 10) - 1;
+      }
+
+      persistState('Aktiviti kalendar disimpan.');
+      renderCalendarModule();
+      closeModal('eventModal');
+    }
+
+    function cycleEventStatus(id) {
+      const order = ['Dirancang', 'Dalam Tindakan', 'Selesai'];
+      const ev = state.calendarEvents.find(x => x.id === id);
+      if (!ev) return;
+      ev.status = order[(order.indexOf(ev.status) + 1) % order.length];
+      persistState(`Status aktiviti -> ${ev.status}`);
+      renderCalendarModule();
+    }
+
+    function deleteEvent(id) {
+      state.calendarEvents = state.calendarEvents.filter(x => x.id !== id);
+      persistState('Aktiviti dipadam.');
+      renderCalendarModule();
+    }
+
+    function renderRoutineTable() {
+      const tbody = document.getElementById('routineTableBody');
+      tbody.innerHTML = '';
+      state.routines.forEach((r, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50';
+        tr.innerHTML = `
+          <td class="py-2 px-2"><input type="text" value="${r.freq}" onchange="updateRoutine(${idx}, 'freq', this.value)" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-bold text-navy-900" /></td>
+          <td class="py-2 px-2"><input type="text" value="${r.action}" onchange="updateRoutine(${idx}, 'action', this.value)" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-slate-800" /></td>
+          <td class="py-2 px-2"><input type="text" value="${r.evidence}" onchange="updateRoutine(${idx}, 'evidence', this.value)" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-slate-600" /></td>
+          <td class="py-2 px-2 text-right no-print"><button onclick="deleteRoutine(${idx})" class="p-1.5 text-slate-400 hover:text-rose-600"><i data-lucide="trash-2" class="w-4 h-4"></i></button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      lucide.createIcons();
+    }
+
+    function updateRoutine(idx, field, val) {
+      state.routines[idx][field] = val;
+      persistState('Jadual rutin dikemas kini.');
+    }
+
+    function addRoutineRow() {
+      state.routines.push({ freq: 'Berkala', action: 'Aktiviti semakan QM baharu', evidence: 'Rekod / Log QM' });
+      persistState('Baris rutin ditambah.');
+      renderRoutineTable();
+    }
+
+    function deleteRoutine(idx) {
+      state.routines.splice(idx, 1);
+      persistState('Baris rutin dipadam.');
+      renderRoutineTable();
+    }
+
+    // =====================================================================
+    // SECTION 6: LINKS DIRECTORY
+    // =====================================================================
+    function renderLinksTable() {
+      const tbody = document.getElementById('linksTableBody');
+      tbody.innerHTML = '';
+      state.links.forEach((lnk, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50';
+        tr.innerHTML = `
+          <td class="py-3 px-3 whitespace-nowrap"><span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-sky-100 text-sky-800">${lnk.category}</span></td>
+          <td class="py-3 px-3 font-bold text-slate-900">${lnk.title}</td>
+          <td class="py-3 px-3">
+            <a href="${lnk.url}" target="_blank" rel="noopener noreferrer" class="text-sky-700 hover:text-sky-900 underline font-semibold break-all">${lnk.url}</a>
+          </td>
+          <td class="py-3 px-3 text-slate-600">${lnk.note || '-'}</td>
+          <td class="py-3 px-2 text-right whitespace-nowrap no-print">
+            <button onclick="openLinkModal(${idx})" class="p-1.5 text-slate-400 hover:text-sky-700"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+            <button onclick="deleteLink(${idx})" class="p-1.5 text-slate-400 hover:text-rose-600"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      lucide.createIcons();
+    }
+
+    function openLinkModal(editIdx = null) {
+      document.getElementById('linkEditIndex').value = editIdx !== null ? editIdx : '';
+      if (editIdx !== null) {
+        const l = state.links[editIdx];
+        document.getElementById('linkCategoryInput').value = l.category;
+        document.getElementById('linkTitleInput').value = l.title;
+        document.getElementById('linkUrlInput').value = l.url;
+        document.getElementById('linkNoteInput').value = l.note || '';
+      } else {
+        document.getElementById('linkForm').reset();
+      }
+      openModal('linkModal');
+    }
+
+    function saveLinkForm(e) {
+      e.preventDefault();
+      const val = document.getElementById('linkEditIndex').value;
+      const idx = val !== '' ? parseInt(val, 10) : -1;
+      const obj = {
+        category: document.getElementById('linkCategoryInput').value,
+        title: document.getElementById('linkTitleInput').value.trim(),
+        url: document.getElementById('linkUrlInput').value.trim(),
+        note: document.getElementById('linkNoteInput').value.trim()
+      };
+      if (idx > -1) state.links[idx] = obj;
+      else state.links.push(obj);
+      persistState('Pautan disimpan.');
+      renderLinksTable();
+      closeModal('linkModal');
+    }
+
+    function deleteLink(idx) {
+      state.links.splice(idx, 1);
+      persistState('Pautan dipadam.');
+      renderLinksTable();
+    }
+
+    // =====================================================================
+    // EXPORT / IMPORT / STANDALONE HTML SNAPSHOT / RESET
+    // =====================================================================
+    function exportJsonBackup() {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `QM_AMTO_16Skn_Backup_2026-11-27.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Fail sandaran JSON berjaya dimuat turun.');
+    }
+
+    function importJsonBackup(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (parsed && Array.isArray(parsed.folders) && Array.isArray(parsed.cars)) {
+            state = parsed;
+            persistState('Data JSON berjaya diimport!');
+            renderAllViews();
+          } else {
+            showToast('Struktur fail JSON tidak sepadan.');
+          }
+        } catch (err) {
+          showToast('Fail JSON tidak sah.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function downloadStandaloneSnapshot() {
+      let htmlSource = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const serialized = JSON.stringify(state).replace(/</g, '\\u003c');
+      htmlSource = htmlSource.replace(
+        'window.__EMBEDDED_QM_SNAPSHOT__ = null;',
+        `window.__EMBEDDED_QM_SNAPSHOT__ = ${serialized};`
+      );
+      const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('index.html dengan data terkini telah dimuat turun.');
+    }
+
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (m) { m.classList.remove('hidden'); m.classList.add('flex'); }
+      lucide.createIcons();
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) { m.classList.add('hidden'); m.classList.remove('flex'); }
+    }
+
+    function openResetModal() {
+      openModal('resetModal');
+    }
+
+    function confirmResetState() {
+      state = getInitialState();
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      persistState('Data telah direset kepada nilai asal.');
+      renderAllViews();
+      closeModal('resetModal');
+    }
+
+    function renderAllViews() {
+      applyCrestDisplay();
+      updateGlobalKPIs();
+      renderMasterFolders();
+      renderMgmtCards();
+      renderStaffTable();
+      renderCarSection();
+      renderCalendarModule();
+      renderRoutineTable();
+      renderLinksTable();
+      lucide.createIcons();
+    }
+
+    window.onload = function() {
+      renderAllViews();
+      setupDynamicPwaManifest();
+    };
+  </script>
+</body>
+</html>
